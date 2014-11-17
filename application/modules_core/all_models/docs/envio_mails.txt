@@ -1,0 +1,18 @@
+ENVIO DE MAILS
+
+
+COMPRA DE UNA PUBLICACION
+#front_works
+	#confirmar_compra
+----------------------------------------------------------------------------------------------------------------------
+CREACION DE UNA CUENTA
+#front_login
+	#crear_cuenta
+		Creción de cuenta. Va bien, no hay que tocar nada.
+----------------------------------------------------------------------------------------------------------------------
+RECUPERACION DE LA CLAVE
+#front_login
+	#recuperar_clave
+		Recuperación de la clave. Va bien, no hay que tocar nada.
+----------------------------------------------------------------------------------------------------------------------
+
