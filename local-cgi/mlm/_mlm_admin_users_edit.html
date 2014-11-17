@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html><head><title>Mailing List Manager v1.0</title>
+<meta name="author"      content="CGI World (Jason Berry)">
+<meta name="description" content="">
+<meta name="website"     content="">
+
+<script language="JavaScript">
+
+<!--
+if (document.images) {
+  D0  = new Image(300, 25);D0.src='$imageurl$desc_default.gif';                // mouse off default title
+  D1  = new Image(300, 25);D1.src='$imageurl$desc_edit_lists.gif';
+  D2  = new Image(300, 25);D2.src='$imageurl$desc_edit_users.gif';
+  D3  = new Image(300, 25);D3.src='$imageurl$desc_preferences.gif';
+  D4  = new Image(300, 25);D4.src='$imageurl$desc_send_mailout.gif';
+  }
+
+function di(id,name){             // display image
+  if (document.images) {
+    if (id && name) { document.images[id].src = eval(name+".src"); }
+    }
+  }
+
+function dm(msgStr) {           // display status bar message
+  window.status = msgStr;
+  document.returnValue = true;
+  }
+
+// -->
+</script>
+
+</head>
+<body bgcolor="#FFFFFF" text="#000000" link="#0000CC" vlink="#0000CC" alink="#0000CC">
+
+<form method=post action="$cgiurl$">
+<input type=hidden name="admin" value=1>
+<input type=hidden name="search" value="$search$">
+<input type=hidden name="email" value="$email$">
+<div align=center>
+
+<table border=0 width=550 cellspacing=0 cellpadding=0><tr><td bgcolor="#000000">
+<table border=0 width=100% cellspacing=1 cellpadding=6>
+ <tr>
+  <td bgcolor="#336699" align=center valign=top>
+
+   <table border=0 cellspacing=0 cellpadding=0 width=100%>
+    <tr>
+     <td align=left valign=top>
+      <a href="$cgiurl$"><img src="$imageurl$logo.gif" height=20 width=250 border=0></a><br>
+      <img name="D" src="$imageurl$desc_default.gif" height=25 width=300 border=0><br>
+     </td>
+     <td align=right valign=bottom>
+      <a href="$cgiurl$?admin=1&list_list=1" onMouseOver="di('D','D1');" onMouseOut="di('D','D0');"><img src="$imageurl$b100x20_edit_lists.gif" height=20 width=100 border=0></a>
+      <a href="$cgiurl$?admin=1&config=1" onMouseOver="di('D','D3');" onMouseOut="di('D','D0');"><img src="$imageurl$b100x20_preferences.gif" height=20 width=100 border=0></a><br>
+      <a href="$cgiurl$?admin=1&user_list=1" onMouseOver="di('D','D2');" onMouseOut="di('D','D0');"><img src="$imageurl$b100x20_edit_users.gif" height=20 width=100 border=0></a>
+      <a href="$cgiurl$?admin=1&mail_create=1" onMouseOver="di('D','D4');" onMouseOut="di('D','D0');"><img src="$imageurl$b100x20_send_mailout.gif" alt="ded" height=20 width=100 border=0></a></td>
+    </tr>
+   </table>
+
+  </td>
+ </tr>
+ <tr>
+  <td bgcolor="#EEEEEE" align=center>
+
+<!-- Content -->
+
+<br>
+
+<table border=0 width=500 cellspacing=0 cellpadding=0><tr><td bgcolor="#000000">
+<table border=0 width=100% cellspacing=1 cellpadding=5>
+ <tr>
+  <td bgcolor="#336699" align=center width=10%><font size=1 face="arial" color="#FFFFFF"><b>EMAIL ADDRESS</b></font></td>
+  <td bgcolor="#CCCCCC"><font face="arial" size=2>$email$</font></td>
+  </tr>
+ <tr>
+  <td bgcolor="#336699" align=center valign=top><font size=1 face="arial" color="#FFFFFF"><b>SELECT MAILING LISTS</b></font></td>
+   <td bgcolor="#CCCCCC">
+   <dl>
+<!-- insert : $list$ -->
+<!-- def : row -->
+    <dt><input type=checkbox name="list$num$" $checked$><font size=2 face="arial">#$num$ <b>$name$</b> ($users$ Users)<br><dd>$desc$</font><dt><hr size=1>
+<!-- /def : row -->
+   </dl>
+   </td>
+  </tr>
+ <tr>
+  <td bgcolor="#336699" align=center valign=top><font size=1 face="arial" color="#FFFFFF"><b>USER INFO</b></font></td>
+   <td bgcolor="#CCCCCC">
+<!-- insert : $qlist$ -->
+<!-- def : qrow -->
+     <font size=2 face="arial">$question$</font><br>
+     <input type=text name="a$qnum$" value="$answer$" size=45><br>
+<!-- /def : qrow -->
+   </td>
+  </tr>
+</table>
+</td></tr></table>
+
+<table border=0 width=510 cellspacing=0 cellpadding=8><tr><td align=right>
+<table border=0 cellspacing=0 cellpadding=0><tr><td bgcolor="#000000">
+<table border=0 width=100% cellspacing=1 cellpadding=5>
+ <tr>
+  <td bgcolor="#CCCCCC" align=center>
+  <table border=0 cellspacing=0 cellpadding=0><tr>
+   <td><input type=image name="user_list" src="$imageurl$b80x20_back.gif" height=20 width=80 border=0></td>
+   <td>&nbsp;</td>
+   <td><input type=image name="user_save" src="$imageurl$b80x20_save.gif" height=20 width=80 border=0></td>
+  </tr></table>
+  </td>
+ </tr>
+</table>
+</td></tr></table>
+</td></tr></table>
+
+<!-- /Content -->
+
+  </td>
+ </tr>
+</table>
+</td></tr></table>
+
+<table border=0 width=550 cellspacing=0 cellpadding=0>
+ <tr>
+  <td align=right><font face="arial" size=1>All Rights Reserved...<BR>
+&copy; Copyright 1998 <A HREF="http://www.cgi-world.com">CGI World</A> of <A HREF="http://www.i2-services.com">I2 Services, Inc</A>.<BR>
+</font></td>
+ </tr>
+</table>
+
+
+</div>
+</form>
+</body></html>

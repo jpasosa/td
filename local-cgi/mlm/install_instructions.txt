@@ -1,0 +1,240 @@
+####################################################################
+# Script:       | MLM (Mailing List Manager)                       #
+# Version:      | 2.0                                              #
+# By:           | Jason Berry (i2 Services, Inc. / CGI World)      #
+# Contact:      | jason@cgi-world.com                              #
+# WWWeb:        | http://www.cgi-world.com                         #
+# Copyright:    | CGI World of I2 Services, Inc.                   #
+# Released:     | August 14th, 1998                                #
+# Updated:      | December 10,1998                                 #
+####################################################################
+# By using this software, you have agreed to the license           #
+# agreement packaged with this program.                            #
+#                                                                  #
+####################################################################
+# MLM (Mailing List Manager) ( http://www.CGI-World.Com/mlm.html ) :
+#
+#
+# Files Included:
+ # 
+  ####################################
+  # Notes: 
+
+           All Files starting with an underscore are avaiable
+           for customization to match your sites look.
+
+           Be sure before editing templates to make a backup copy
+           of all files. Backing up the entire .zip you received
+           would be ideal.
+
+           Remember when uploading data files & .cgi files, upload
+           in ASCII mode. Uploading a .cgi or .pl file in BINARY will
+           cause it not to execute correctly. After uploading
+           set its file permission to 755 (Executable).
+
+           Make sure all .cgi or .pl files have the correct path
+           to Perl 5 on your server. Check the FAQ below to find
+           out where Perl 5 is on your server.
+
+           Do not rename any files except for the  main program
+           file (MLM_v*.cgi) All other files need to keep the names
+           they were packaged as.
+
+
+   #
+  #
+#
+# Installation Procedures:
+ #
+   #######################
+
+   * Note:  Create a directory for Mailing List Manager & set it 
+            to mode mode 777 (writable) (If your server requires
+            .cgi files in a cgi-bin, create a 'MLM' or directory name
+             of your choice  inside your CGI-Bin). All files packaged with
+            this program should be in one directory w/ the correct file
+            permissions.
+
+
+   Unzip the archive file you received from CGI World and copy the
+   files into the directory on your web site where you want the
+   Mailing List Manager  Program to run.  
+
+   * NOTE:
+
+      You must upload all data & CGI files in ASCII mode
+      for them to run correctly. Upload all other files
+      (HTML, Images, Blat.exe in Binary Mode).
+
+
+   Make sure the program file (MLM_v*.cgi & edis-lib.pl)
+   have execute permissions (755) and the directory you created
+   for the program has write permissions (777). Set the
+   'mlm_config.dat.cgi' file to writable permissions (666).
+   Otherwise you will not be able to update your preferences.
+   
+
+   Run the MLM_v*.cgi file from your browser. If you receive
+   HTML output from the script the CGI is executing properly.
+   To enter the administration area add a '?admin' extension
+   to the end of the .cgi File name. (ie: MLM_v*.cgi?admin)
+
+   You can now start creating your Mailing Lists! Remember
+   to set your admin password.
+
+   * NOTE TO WINDOWS/BLAT USERS:
+
+      - If you're using MLManager with Blat email for
+        Windows webservers, upload the blat.exe file
+        to the same directory you run the Mailing List
+        Manager Program in.
+
+        Remember to upload 'blat.exe' in Binary Format.
+
+
+   #
+  #
+#
+# Using Mailing List Manager:
+ #
+   ##########################
+
+   * Customizing the Viewer Interface:
+     --------------------------------
+
+      * FILE NAME: _mlm_select_login.html
+
+      -  This is the HTML Page where they enter their email address.
+      -  Customize the HTML in this file to give it your
+      -  web sites look.
+
+
+      * FILE NAME: _mlm_select.html
+
+      -  This is the HTML Page where they select lists they would
+      -  like to subscribe to.
+      -  Customize the HTML in this file to give it your
+      -  web sites look.
+
+
+      * FILE NAME: _mlm_select_saved.html
+
+      -  This is the HTML Page that tells them the their
+      -  information on lists they have subscribed to has
+      -  been saved.
+
+      * All Other files do not need to be customized as they
+      * are the administration areas of the program.
+
+
+   * Different Options for Subscribing:
+     ---------------------------------
+
+     1) Letting users enter their email address in a input 
+        box, then be taken to a page that lists the
+        mailing lists you have setup that they can then
+        subscribe to.
+
+        The HTML you would use is:
+
+        -------------------------------------------
+        <form method=post action="http://www.url_to.com/mlm.cgi">
+        <input type=text name="email">
+        -------------------------------------------
+
+     2) Letting users enter their email address & be
+        automatically subscribed to lists you have setup.
+
+        The HTML you would use is:
+
+        -------------------------------------------
+        <form method=post action="http://www.url_to.com/mlm.cgi">
+        <input type=text name="email">
+        <input type=hidden name="list1" value="on">
+        <input type=hidden name="list2" value="on">
+        <input type=hidden name="select_save" value="1">
+
+        Note:  To find out a lists "name" go into the
+               administration area and look at the source
+               code to figure out what list #'s are attached
+               to each list.
+
+        -------------------------------------------
+ 
+     3) If you are looking to keep the subscribing option
+        as default, you will just need to customize those
+        3 HTML pages.
+
+
+
+   #
+  #
+#
+# Frequently Asked Questions:
+ #
+   ##########################
+
+   Q) The script is producing a Internal Server Error when
+      I view the .cgi script w/ my browser:
+
+      * A) This could be because of several reasons. First, did
+           you upload the .cgi script in ASCII Mode? Set the 
+           CGI Script to mode 755 (chmod 755 filename.cgi) or
+           not have the correct path to Perl5 as the top line?
+
+           If the above checks out, at telnet type:
+
+           perl -c filename.cgi - This will tell you what errors
+           perl has found with the script. If you happen to get
+           a syntax error, it may be because you're not using a
+           recent version of perl 5. If you get a syntax OK 
+           message back, check again the first set of possible
+           problems.
+
+           To find where perl5 is on your server type:
+ 
+           whereis perl5
+
+           To find which version of perl is at /usr/bin/perl type:
+
+           perl -v
+
+
+   #
+  #
+#
+# MLManager Support:
+ #
+   ##################
+
+   If you need support for this product please visit:
+  
+   * http://www.cgi-world.com/support.html
+ 
+   or
+
+   e-Mail Us @:
+ 
+   * support_request@cgi-world.com
+
+   or
+
+   Visit Our Contact Us Page @:
+
+   * http://www.cgi-world.com/contact_us.html
+
+
+   #
+  #
+#
+# Copyright & Author Notes:
+ #
+   ########################
+
+   Mailing List Manager  - All Rights Reserved.
+                           Copyright Jason Berry (jasone@cgi-world.com)
+                           CGI World (http://www.CGI-World.Com)
+                           CGI World is a Prouct of i2 Services, Inc.
+                           (http://www.i2-Services.Com)
+
+

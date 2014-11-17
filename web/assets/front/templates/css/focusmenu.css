@@ -1,0 +1,72 @@
+/******  *****/
+
+
+	#menuheader1 { /**** MENU BLOQUE IZQ , TAMANIO POSICION Y LOGO ****/
+		position:relative;
+		margin:0;
+		padding:0;
+		padding-top: 14px;
+		padding-left: 45px;
+		background: #000000 url(../images/logow.png) 0px 24px no-repeat;
+		width:100%;
+		float:left;
+
+		/* border:1px solid #42432d; */
+		/* border:1px dotted silver; /** debug **/
+		/* border-width:1px 0; */
+	}
+	#menuheader1 li {
+		display:inline;
+		padding:0;
+		margin:0;
+	}
+	#menuheader1 a:link,
+	#menuheader1 a:visited { /**** MENU BLOQUE IZQ , LINKS ****/
+		/* background:#b2b580; */ /* Color marron */
+		background:#666666; /*** Color fondo de los botones ***/
+		/* padding:20px 40px 4px 10px; */
+		padding: 14px 40px 4px 10px;
+		border-radius: 4px;
+		float:left;
+		width:auto;
+		border-right:2px solid #42432d; /*** separador entre botones ***/
+		color:#FFFFFF; /*** color texto botones ***/
+		text-decoration:none;
+		font-family: Arial, Helvetica, sans-serif;
+		font-weight:bold;
+		font-size: 12px;
+		text-transform:uppercase;
+		text-shadow: 2px 2px 2px #000000;
+	}
+	#menuheader1 a:hover,
+	#menuheader1 a:focus {
+		color:#fff;
+		background:#727454; /*** color fondo boton hover ***/
+		background:#A5B9CE; /*** color fondo boton hover ***/
+	}
+	#menuheader1 li:first-child a {
+		border-left:1px solid #42432d;
+	}
+	#home #nav-home a,
+	#temas #nav-temas a,
+	#destacados #nav-destacados a,
+	#beneficios #nav-beneficios a,
+	#reviews #nav-reviews a,
+	#contact #nav-contact a {
+		background:#e35a00; /*** color fondo boton activado ***/
+		background:#990000; /*** color fondo boton activado ***/
+		color:#fff;
+		text-shadow:none;
+	}
+	#home #nav-home a:hover,
+	#temas #nav-temas a:hover,
+	#destacados #nav-destacados a:hover,
+	#beneficios #nav-beneficios a:hover,
+	#reviews #nav-reviews a:hover,
+	#contact #nav-contact a:hover {
+		background:#e35a00; /*** color fondo en hover para boton activado ***/
+	}
+	#menuheader1 a:active {
+		background:#e35a00;
+		color:#fff;
+	}
