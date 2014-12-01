@@ -22,6 +22,7 @@ class Login_model extends CI_Model {
 																WHERE U.email = " . $this->db->escape($usuario['email']) . "
 																		AND U.idRoles = R.idRoles AND (U.estado = 1) " );
 						$usuario = $query->row_array();
+
 						if(isset($usuario['idUsuarios']) && $usuario['idUsuarios'] >= 1) {
 								return $usuario;
 						} else {
