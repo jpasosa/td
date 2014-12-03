@@ -47,29 +47,32 @@ class Trabajos_model extends CI_Model
 			$errors['texto'] = 'El texto es obligatorio';
 		}
 
-		if(!isset($trabajo['resumen'])) {
-			$errors['resumen'] = 'El resumen es obligatorio';
-		}
+		// Ya no es más obligatorio el resumen.
+		// if(!isset($trabajo['resumen'])) {
+		// 	$errors['resumen'] = 'El resumen es obligatorio';
+		// }
 
 		if(!isset($trabajo['idCategorias_parentId'])){
 			$errors['idCategorias_parentId'] = 'Debe elegir una categoría';
 		}
 
-		if (isset($trabajo['texto']))
-		{
-			$cant_palabras_texto = str_word_count($trabajo['texto']);
-			if($cant_palabras_texto < 70) {
-				$errors['texto_minimo'] = 'La descripción debe tener como mínimo 70 palabras';
-			}
-		}
 
-		if (isset($trabajo['resumen']))
-		{
-			$cant_palabras_resumen = str_word_count($trabajo['resumen']);
-			if($cant_palabras_resumen < 70) {
-				$errors['resumen_minimo'] = 'El resumen debe tener como mínimo 70 palabras';
-			}
-		}
+		// Ya no valida más por cantidad mínima
+		// if (isset($trabajo['texto']))
+		// {
+		// 	$cant_palabras_texto = str_word_count($trabajo['texto']);
+		// 	if($cant_palabras_texto < 70) {
+		// 		$errors['texto_minimo'] = 'La descripción debe tener como mínimo 70 palabras';
+		// 	}
+		// }
+
+		// if (isset($trabajo['resumen']))
+		// {
+		// 	$cant_palabras_resumen = str_word_count($trabajo['resumen']);
+		// 	if($cant_palabras_resumen < 70) {
+		// 		$errors['resumen_minimo'] = 'El resumen debe tener como mínimo 70 palabras';
+		// 	}
+		// }
 
 
 

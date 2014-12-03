@@ -16,11 +16,15 @@
 					<input type="text" name="titulo" value="<?php if (isset($work['titulo'])): echo $work['titulo']; endif; ?>" />
 				</label>
 				<br />
+				<p style="width: 350px;">
+					Importante: Cuanta mayor información se introduzca en la descripción y en el resumen,
+					mayores ventas podrá obtener.
+				</p>
 				<label>Descripción breve (*)<br />
 					<textarea name="texto" class="descripcion"><?php if (isset($work['texto'])): echo $work['texto']; endif; ?></textarea>
 				</label>
 				<br />
-				<label>Resúmen (*)<br />
+				<label>Resúmen<br />
 					<textarea name="resumen" class="descripcion"><?php if (isset($work['resumen'])): echo $work['resumen']; endif; ?></textarea>
 				</label>
 				<br />
