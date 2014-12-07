@@ -131,7 +131,7 @@
 			</div>
 		</div>
 	</div>
-	<p class="precio">Precio: $<?php echo $work['precio_con_derecho']; ?></p>
+	<p class="precio">Precio: U$D <?php echo $work['precio_con_derecho']; ?></p>
 	<p class="btn" id="btcomprar">
 		<a href="<?=site_url($comprar_articulo);?>">
 			Conseguir este Artículo
