@@ -129,6 +129,7 @@ class Trabajos_model extends CI_Model
 		try
 		{
 
+
 			if(checkRol('administrador', $this->session)){
 				if(!isset($trabajo['estado'])){
 					$trabajo['estado'] = 1;
@@ -166,6 +167,7 @@ class Trabajos_model extends CI_Model
 					'idCategorias_parentId' 	=> $trabajo['idCategorias_parentId'],
 					'cantidadPalabras' 		=> $trabajo['cantidadPalabras'],
 					'indice' 					=> $trabajo['indice'],
+					'nivel' 					=> $trabajo['nivel'],
 					'foto' 					=> $this->guardarFoto($trabajo['foto']),
 					'archivo_publico' 		=> $this->guardarArchivo('archivo_publico',$trabajo['archivo_publico']),
 					'archivo_privado' 		=> $this->guardarArchivo('archivo_privado',$trabajo['archivo_privado']),
@@ -335,18 +337,19 @@ class Trabajos_model extends CI_Model
 			{
 				$data = array(
 						'idUsuarios' 			=> $trabajo['idUsuarios'],
-						'texto' 				=> $trabajo['texto'],
-						'titulo'  				=> $trabajo['titulo'],
-						'resumen' 			=> $trabajo['resumen'],
-						'fecha'	 			=> date('Y-m-d',strtotime($trabajo['fecha'])),
-						'palabrasClave' 		=> $trabajo['palabrasClave'],
-						'monto_por_venta'  => $trabajo['monto_por_venta'],
-						'precio_sin_derecho' => $trabajo['precio_sin_derecho'],
-						'precio_con_derecho' => $trabajo['precio_con_derecho'],
+						'texto' 					=> $trabajo['texto'],
+						'titulo'  					=> $trabajo['titulo'],
+						'resumen' 				=> $trabajo['resumen'],
+						'fecha'	 				=> date('Y-m-d',strtotime($trabajo['fecha'])),
+						'palabrasClave' 			=> $trabajo['palabrasClave'],
+						'monto_por_venta'  	=> $trabajo['monto_por_venta'],
+						'precio_sin_derecho' 	=> $trabajo['precio_sin_derecho'],
+						'precio_con_derecho' 	=> $trabajo['precio_con_derecho'],
 						'destacado' 			=> $trabajo['destacado'],
 						'idCategorias_parentId' => $trabajo['idCategorias_parentId'],
-						'cantidadPalabras' 	=> $trabajo['cantidadPalabras'],
-						'indice' 				=> $trabajo['indice'],
+						'cantidadPalabras' 		=> $trabajo['cantidadPalabras'],
+						'indice' 					=> $trabajo['indice'],
+						'nivel' 					=> $trabajo['nivel'],
 						//'archivo_publico' => $archivo_publico,
 						//'archivo_privado' => $archivo_privado,
 						//'foto' => $foto,
@@ -821,6 +824,15 @@ class Trabajos_model extends CI_Model
 		} catch (Exception $e) {
 			return true;
 		}
+	}
+
+
+	public function getAllNiveles()
+	{
+		$type = $this->db->query( "SHOW COLUMNS FROM Trabajos WHERE Field = 'nivel'" )->row( 0 )->Type;
+		preg_match("/^enum\(\'(.*)\'\)$/", $type, $matches);
+		$enum = explode("','", $matches[1]);
+		return $enum;
 	}
 
 

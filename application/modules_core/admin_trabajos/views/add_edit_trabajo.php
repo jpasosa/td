@@ -247,6 +247,20 @@
 								<input type="text" name="cantidadPalabras" id="cantidadPalabras" class="input-small" value="<?php if(isset($trabajo['cantidadPalabras'])) echo $trabajo['cantidadPalabras'];?>" >
 							</div>
 
+							<!-- NIVEL -->
+							<div class="controls">&nbsp;</div>
+							<label class="control-label">Nivel </label>
+							<div class="control-group">
+								<select name="nivel" id="nivel" >
+									<?php foreach($niveles AS $nivel):?>
+										<option value="<?php echo $nivel;?>" <?php if($trabajo['nivel'] == $nivel) echo 'selected="selected"'; ?> >
+											<?php echo $nivel;?>
+										</option>
+									<?php endforeach;?>
+								</select>
+							</div>
+
+
 							<!-- LISTA DE PRECIOS -->
 							<!-- POR AHORA NO VA
 							<div class="controls">&nbsp;</div>

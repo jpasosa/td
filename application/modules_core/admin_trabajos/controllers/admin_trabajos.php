@@ -44,9 +44,11 @@ class Admin_trabajos extends MX_Controller
 
 		$data['trabajo'] 		= $trabajo;
 		$data['precios'] 		= $this->precios_model->getAll();
-		$data['categorias'] 	= $this->categorias_model->getAll();
-		$data['estados'] 	= $this->estadostrabajos_model->getAll();
-		$data['form_action'] = PUBLIC_FOLDER_ADMIN . "trabajos/nuevo.html";
+		$data['categorias'] 		= $this->categorias_model->getAll();
+		$data['niveles']			= $this->trabajos_model->getAllNiveles();
+
+		$data['estados'] 		= $this->estadostrabajos_model->getAll();
+		$data['form_action'] 	= PUBLIC_FOLDER_ADMIN . "trabajos/nuevo.html";
 
 		$parentCat =array();
 		foreach($data['categorias'] as $categoria){
@@ -121,14 +123,13 @@ class Admin_trabajos extends MX_Controller
 				$parentCat[] = $categoria;
 			}
 		}
+
 		$data['this'] 		= $this;
 		$data['parentCat'] 	= $parentCat;
 		$data['usuarios'] 	= $this->usuarios_model->getAll();
-		$data['estados']		= $this->estadostrabajos_model->getAll();
-		$data['precios'] 		= $this->precios_model->getAll();
-
-
-
+		$data['estados']	= $this->estadostrabajos_model->getAll();
+		$data['precios'] 	= $this->precios_model->getAll();
+		$data['niveles']		= $this->trabajos_model->getAllNiveles();
 
 		$data['form_action'] = PUBLIC_FOLDER_ADMIN . "trabajos/editar/".$trabajo['idTrabajos'];
 		$this->load->view('admin_templates/header',array('title' => 'Panel de Control :: Trabajos'));
@@ -225,6 +226,12 @@ class Admin_trabajos extends MX_Controller
 			$trabajo['cantidadPalabras'] = (int)$this->input->post('cantidadPalabras');
 		} else {
 			$trabajo['cantidadPalabras'] = 0;
+		}
+
+		if($this->input->post('nivel')) {
+			$trabajo['nivel'] = $this->input->post('nivel');
+		} else {
+			$trabajo['nivel'] = 'Otro';
 		}
 
 		if($this->input->post('idEstados')){

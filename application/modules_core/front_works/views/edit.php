@@ -117,6 +117,16 @@
 						<?php endif ?>
 					</select>
 				</p>
+
+				<p>Nível <br />
+					<select name="nivel" id="nivel" >
+						<?php foreach($niveles AS $nivel):?>
+							<option value="<?php echo $nivel;?>" <?php if($trabajo['nivel'] == $nivel) echo 'selected="selected"'; ?> >
+								<?php echo $nivel;?>
+							</option>
+						<?php endforeach;?>
+					</select>
+				</p>
 				<!--
 				<label>Lista de Precios  <br />
 					<select name="idPrecios">

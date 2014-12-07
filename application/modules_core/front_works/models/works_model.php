@@ -20,27 +20,28 @@ class Works_model extends CI_Model
 
 			$data = array(
 					'idUsuarios' 			=> $work['idUsuarios'],
-					'texto' 				=> $work['texto'],
-					'titulo'  				=> $work['titulo'],
-					'resumen' 			=> $work['resumen'],
-					'fecha' 				=> date('Y-m-d',strtotime($work['fecha'])),
-					'palabrasClave' 		=> $work['palabrasClave'],
+					'texto' 					=> $work['texto'],
+					'titulo'  					=> $work['titulo'],
+					'resumen' 				=> $work['resumen'],
+					'fecha' 					=> date('Y-m-d',strtotime($work['fecha'])),
+					'palabrasClave' 			=> $work['palabrasClave'],
 					'monto_por_venta'  	=> $work['monto_por_venta'],
-					'precio_sin_derecho' => $work['precio_sin_derecho'],
-					'precio_con_derecho' => $work['precio_con_derecho'],
+					'precio_sin_derecho' 	=> $work['precio_sin_derecho'],
+					'precio_con_derecho' 	=> $work['precio_con_derecho'],
 					'destacado' 			=> $work['destacado'],
 					'idCategorias_parentId' => $work['idCategorias_parentId'],
-					'cantidadPalabras' 	=> $work['cantidadPalabras'],
-					'cantidad_paginas' 	=> $work['cantidad_paginas'],
-					'indice' 				=> $work['indice'],
+					'cantidadPalabras' 		=> $work['cantidadPalabras'],
+					'cantidad_paginas' 		=> $work['cantidad_paginas'],
+					'indice' 					=> $work['indice'],
+					'nivel' 					=> $work['nivel'],
 					// 'indice' 				=> $this->guardarIndice($work['indice']),
-					'foto' 				=> $this->savePhoto($work['foto']),
-					'archivo_publico' 	=> $this->saveFile('archivo_publico', $work['archivo_publico']),
-					'archivo_privado' 	=> $this->saveFile('archivo_privado', $work['archivo_privado']),
-					'archivo_vista_previa'=> $this->saveFile('archivo_vista_previa', $work['archivo_vista_previa']),
-					'idEstados' 			=> $work['idEstados'],
+					'foto' 					=> $this->savePhoto($work['foto']),
+					'archivo_publico' 		=> $this->saveFile('archivo_publico', $work['archivo_publico']),
+					'archivo_privado' 		=> $this->saveFile('archivo_privado', $work['archivo_privado']),
+					'archivo_vista_previa'	=> $this->saveFile('archivo_vista_previa', $work['archivo_vista_previa']),
+					'idEstados' 				=> $work['idEstados'],
 					// 'idPrecios' 			=> $work['idPrecios'],
-					'notificado' 			=> $work['notificado']
+					'notificado' 				=> $work['notificado']
 					);
 			$this->db->insert('Trabajos',$data);
 
@@ -91,30 +92,34 @@ class Works_model extends CI_Model
 		try
 		{
 
+
 			$this->db->trans_begin();
+
+
 
 
 			$data = array(
 					'idUsuarios' 			=> $work['idUsuarios'],
-					'texto' 				=> $work['texto'],
-					'titulo'  				=> $work['titulo'],
-					'resumen' 			=> $work['resumen'],
-					'fecha' 				=> date('Y-m-d',strtotime($work['fecha'])),
-					'palabrasClave' 		=> $work['palabrasClave'],
+					'texto' 					=> $work['texto'],
+					'titulo'  					=> $work['titulo'],
+					'resumen' 				=> $work['resumen'],
+					'fecha' 					=> date('Y-m-d',strtotime($work['fecha'])),
+					'palabrasClave' 			=> $work['palabrasClave'],
 					'monto_por_venta'  	=> $work['monto_por_venta'],
-					'precio_sin_derecho' => $work['precio_sin_derecho'],
-					'precio_con_derecho' => $work['precio_con_derecho'],
+					'precio_sin_derecho' 	=> $work['precio_sin_derecho'],
+					'precio_con_derecho' 	=> $work['precio_con_derecho'],
 					'destacado' 			=> $work['destacado'],
 					'idCategorias_parentId' => $work['idCategorias_parentId'],
-					'cantidadPalabras' 	=> $work['cantidadPalabras'],
-					'cantidad_paginas' 	=> $work['cantidad_paginas'],
-					'indice' 				=> $work['indice'],
+					'cantidadPalabras' 		=> $work['cantidadPalabras'],
+					'cantidad_paginas' 		=> $work['cantidad_paginas'],
+					'indice' 					=> $work['indice'],
+					'nivel' 					=> $work['nivel'],
 					// 'indice' 				=> $this->guardarIndice($work['indice']),
-					'foto' 				=> $this->savePhoto($work['foto']),
-					// 'archivo_publico' 	=> $this->saveFile('archivo_publico',$work['archivo_publico']),
-					'idEstados' 			=> $work['idEstados'],
-					'idPrecios' 			=> $work['idPrecios'],
-					'notificado' 			=> $work['notificado']
+					'foto' 					=> $this->savePhoto($work['foto']),
+					// 'archivo_publico' 		=> $this->saveFile('archivo_publico',$work['archivo_publico']),
+					'idEstados' 				=> $work['idEstados'],
+					'idPrecios' 				=> $work['idPrecios'],
+					'notificado' 				=> $work['notificado']
 					);
 
 			$this->db->where('idTrabajos', $id_trabajo);
@@ -183,6 +188,7 @@ class Works_model extends CI_Model
 					'cantidadPalabras' 	=> $work['cantidadPalabras'],
 					'cantidad_paginas' 	=> $work['cantidad_paginas'],
 					'indice' 				=> $work['indice'],
+					'nivel' 				=> $work['nivel'],
 					// 'indice' 				=> $this->guardarIndice($work['indice']),
 					// 'foto' 				=> $this->savePhoto($work['foto']),
 					// 'archivo_publico' 	=> $this->saveFile('archivo_publico',$work['archivo_publico']),
@@ -268,6 +274,12 @@ class Works_model extends CI_Model
 		$errors = false;
 
 		$valid_files = $this->config->item('format_validations');
+
+
+		if ( $work['archivo_privado'] == '') {
+			$errors['sin_archivo'] = 'Debe seleccionar algún archivo.';
+		}
+
 
 		// VALIDO POR LA EXTENSION DEL ARCHIVO SUBIDO,  ARCHIVO PRIVADO
 		if ( isset($_FILES['archivo_privado']['type']) && $_FILES['archivo_privado']['type'] != '')
@@ -424,6 +436,13 @@ class Works_model extends CI_Model
 	}
 
 
+	public function getAllNiveles()
+	{
+		$type = $this->db->query( "SHOW COLUMNS FROM Trabajos WHERE Field = 'nivel'" )->row( 0 )->Type;
+		preg_match("/^enum\(\'(.*)\'\)$/", $type, $matches);
+		$enum = explode("','", $matches[1]);
+		return $enum;
+	}
 
 
 }

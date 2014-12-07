@@ -42,7 +42,7 @@
 				<br />
 				<!-- ARCHIVO PRIVADO -->
 				<label>
-					Documento (.doc, .docx, .odt)<br />
+					Documento (.doc, .docx, .odt, .pdf)<br />
 					<!-- <span class="btn btn-file" style="font-size: 11px;" name="btSeleccionar" id="btSeleccionar" > -->
 						Selecc
 						<input type="file" name="archivo_privado" />
@@ -184,6 +184,17 @@
 						<?php endif ?>
 					</select>
 				</p>
+				<p>Nível <br />
+					<select name="nivel" id="nivel" >
+						<?php foreach($niveles AS $nivel):?>
+							<option value="<?php echo $nivel;?>" <?php if($trabajo['nivel'] == $nivel) echo 'selected="selected"'; ?> >
+								<?php echo $nivel;?>
+							</option>
+						<?php endforeach;?>
+					</select>
+				</p>
+
+
 				<!--
 				<label>Lista de Precios  <br />
 					<select name="idPrecios">

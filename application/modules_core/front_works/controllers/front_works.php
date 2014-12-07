@@ -108,11 +108,13 @@ class Front_works extends CI_class {
 
 
 			$data['work'] 		= $work;
-			$data['section'] 		= $this->section; // en donde estamos
-			$data['precios'] 		= $this->repo_precios->getAll();
+			$data['section'] 	= $this->section; // en donde estamos
+			$data['precios'] 	= $this->repo_precios->getAll();
 			$data['categorias'] 	= $this->repo_categorias->getAll();
 			$data['estados'] 	= $this->repo_estadostrabajos->getAll();
 			$data['usuarios'] 	= $this->repo_usuarios->getAll();
+			$data['niveles']		= $this->works_model->getAllNiveles();
+
 			$data['form_action'] = site_url('trabajos/alta/');
 
 
@@ -178,7 +180,6 @@ class Front_works extends CI_class {
 			if($this->input->server('REQUEST_METHOD') == 'GET') { // Comienza a editar la publicación.
 				$get_work 	= $this->repo_trabajos->getByIdIncludeSubcategorys($id_work);
 				$work 		= $this->getDataForEdit($get_work);
-
 			}else{ // GUARDAR, por post.
 				$work 				= $this->getData();
 
@@ -189,6 +190,7 @@ class Front_works extends CI_class {
 
 			if($this->input->server('REQUEST_METHOD') == 'POST' and !$errors)
 			{
+
 				if($this->works_model->update_noadmin($work, $id_work)) {
 					$user 			= $this->repo_usuarios->getById($work['idUsuarios']);
 					$message 		= 'El nuevo trabajo se ha editado con éxito.';
@@ -209,9 +211,10 @@ class Front_works extends CI_class {
 
 			$data['trabajo']		= $work;
 			$data['work'] 		= $work;
-			$data['section'] 		= $this->section; // en donde estamos
-			$data['precios'] 		= $this->repo_precios->getAll();
+			$data['section'] 	= $this->section; // en donde estamos
+			$data['precios'] 	= $this->repo_precios->getAll();
 			$data['categorias'] 	= $this->repo_categorias->getAll();
+			$data['niveles']		= $this->works_model->getAllNiveles();
 			$data['estados'] 	= $this->repo_estadostrabajos->getAll();
 			$data['usuarios'] 	= $this->repo_usuarios->getAll();
 			$data['form_action'] = site_url('trabajos/editar/'. $id_work);
@@ -585,6 +588,13 @@ class Front_works extends CI_class {
 			$work['indice'] = '';
 		}
 
+		if($this->input->post('nivel')) {
+			$work['nivel'] = $this->input->post('nivel');
+		} else {
+			$work['nivel'] = 'Otro';
+		}
+
+
 		if($this->input->post('idCategorias_parentId')) {
 			$work['idCategorias_parentId']  = $this->input->post('idCategorias_parentId');
 		}else {
@@ -738,6 +748,7 @@ class Front_works extends CI_class {
 		$work['destacado'] 			= 0;
 		$work['foto'] 				= '';
 		$work['indice'] 				= '';
+		$work['nivel'] 				= 'Secundario';
 		$work['idCategorias'] 		= '';
 		$work['idCategorias_parentId'] = '';
 		$work['precio_sin_derecho'] = 0.0;
