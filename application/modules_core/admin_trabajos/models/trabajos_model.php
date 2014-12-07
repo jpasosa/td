@@ -12,6 +12,13 @@ class Trabajos_model extends CI_Model
 	{
 		$errors = false;
 
+
+
+		// Valido por si no cargó el archivo provado.
+		if ( $trabajo['archivo_privado'] == '' ) {
+			$errors['falta_archivo_privado'] = 'Debe seleccionar un archivo privado';
+		}
+
 		$valid_files = array('application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
 							'application/vnd.oasis.opendocument.text', 'application/pdf');
 
@@ -84,6 +91,10 @@ class Trabajos_model extends CI_Model
 	{
 		$errors = false;
 
+		// Valido por si no cargó el archivo provado.
+		if ( $trabajo['archivo_privado'] == '' ) {
+			$errors['falta_archivo_privado'] = 'Debe seleccionar un archivo privado';
+		}
 
 		$valid_files = $this->config->item('format_validations');
 		// VALIDO POR LA EXTENSION DEL ARCHIVO SUBIDO
