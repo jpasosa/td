@@ -2,6 +2,8 @@
 
 class Admin_trabajos extends MX_Controller
 {
+
+
 	public function __construct()
 	{
 		parent::__construct();
@@ -10,8 +12,11 @@ class Admin_trabajos extends MX_Controller
 		$this->load->model('admin_usuarios/usuarios_model');
 		$this->load->model('admin_categorias/categorias_model');
 		$this->load->model('admin_precios/precios_model');
+		$this->config->load('preciomax');
 		//$this->output->enable_profiler(TRUE);
 	}
+
+
 
 	public function nuevo()
 	{
@@ -46,7 +51,7 @@ class Admin_trabajos extends MX_Controller
 		$data['precios'] 		= $this->precios_model->getAll();
 		$data['categorias'] 		= $this->categorias_model->getAll();
 		$data['niveles']			= $this->trabajos_model->getAllNiveles();
-
+		$data['preciomax']		= $this->config->item('preciomax');
 		$data['estados'] 		= $this->estadostrabajos_model->getAll();
 		$data['form_action'] 	= PUBLIC_FOLDER_ADMIN . "trabajos/nuevo.html";
 

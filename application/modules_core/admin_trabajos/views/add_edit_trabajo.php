@@ -81,13 +81,13 @@
 								<div class="controls">&nbsp;</div>
 								<label class="control-label">Precio Sin derechos&nbsp;</label>
 								<div class="control-group">
-									<input type="text" class="input-small" name="precio_sin_derecho" id="precio_sin_derecho" value="<?php if(isset($trabajo['precio_sin_derecho'])) echo $trabajo['precio_sin_derecho'];?>">
+									<input type="number" class="input-small" name="precio_sin_derecho" min="0" max="<?php echo $preciomax; ?>" id="precio_sin_derecho" value="<?php if(isset($trabajo['precio_sin_derecho'])) echo $trabajo['precio_sin_derecho'];?>">
 								</div>
 								<!-- PRECIO CON DERECHOS -->
 								<div class="controls">&nbsp;</div>
 								<label class="control-label">Precio Con derechos&nbsp;</label>
 								<div class="control-group">
-									<input type="text" class="input-small" name="precio_con_derecho" id="precio_con_derecho" value="<?php if(isset($trabajo['precio_con_derecho'])) echo $trabajo['precio_con_derecho'];?>">
+									<input type="number" class="input-small" name="precio_con_derecho" min="0" max="<?php echo $preciomax; ?>" id="precio_con_derecho" value="<?php if(isset($trabajo['precio_con_derecho'])) echo $trabajo['precio_con_derecho'];?>">
 								</div>
 								<!-- MONTO AL AUTOR EN CASO DE VENTA -->
 								<div class="controls">&nbsp;</div>

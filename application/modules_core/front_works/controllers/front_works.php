@@ -8,6 +8,7 @@ class Front_works extends CI_class {
 		// $this->load->library('session');
 		$this->load->model('works_model');
 		$this->config->load('emails');
+		$this->config->load('preciomax');
 		// $this->load->config('emails');
 		//$this->session->sess_destroy();                      // Tengo que poner esto para hacer pruebas
 		//$this->output->enable_profiler(TRUE); // Para habilitar barra depuración
@@ -47,10 +48,10 @@ class Front_works extends CI_class {
 				}
 			}
 
-			$data['section'] 			= $this->section; // en donde estamos
+			$data['section'] 		= $this->section; // en donde estamos
 			$data['form_validate'] 	= base_url('/login/validate');
 			$data['body_id'] 		= 'crearcuenta';
-
+			$data['preciomax']		= $this->config->item('preciomax');
 			// $categorias 	= $this->repo_categorias->getSubCategorysById(27);
 
 			$message 	= "";

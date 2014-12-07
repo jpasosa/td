@@ -275,6 +275,18 @@ class Works_model extends CI_Model
 
 		$valid_files = $this->config->item('format_validations');
 
+		// Valido precios.
+		$this->config->load('preciomax');
+		$precio_max = $this->config->load('preciomax');
+		if ( $work['precio_con_derecho'] > $precio_max )
+		{
+			$errors['error_precio_derecho'] = 'El precio con derecho no puede superar el máximo establecido.';
+		}
+		if ( $work['precio_con_derecho'] <= 0 )
+		{
+			$errors['error_precio_derecho'] = 'El precio con derecho debe ser mayor a 0';
+		}
+
 
 		if ( $work['archivo_privado'] == '') {
 			$errors['sin_archivo'] = 'Debe seleccionar algún archivo.';

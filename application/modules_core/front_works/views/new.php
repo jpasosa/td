@@ -184,7 +184,9 @@
 						<?php endif ?>
 					</select>
 				</p>
-				<p>Nível <br />
+				<p>
+					Nível
+					<br />
 					<select name="nivel" id="nivel" >
 						<?php foreach($niveles AS $nivel):?>
 							<option value="<?php echo $nivel;?>" <?php if($trabajo['nivel'] == $nivel) echo 'selected="selected"'; ?> >
@@ -194,6 +196,12 @@
 					</select>
 				</p>
 
+				<p>
+					<label>
+						Precio (valor máximo: USD <?php echo $preciomax; ?>)<br />
+						<input type="number" name="precio_con_derecho" min="0" max="<?php echo $preciomax; ?>" value="<?php if (isset($work['precio_con_derecho'])): echo $work['precio_con_derecho']; endif; ?>" />
+					</label>
+				</p>
 
 				<!--
 				<label>Lista de Precios  <br />

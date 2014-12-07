@@ -13,6 +13,17 @@ class Trabajos_model extends CI_Model
 		$errors = false;
 
 
+		// Valido precios.
+		$this->config->load('preciomax');
+		$precio_max = $this->config->load('preciomax');
+		if ( $trabajo['precio_con_derecho'] > $precio_max )
+		{
+			$errors['error_precio_derecho'] = 'El precio con derecho no puede superar el máximo establecido.';
+		}
+		if ( $trabajo['precio_sin_derecho'] > $precio_max )
+		{
+			$errors['error_precio_sin_derecho'] = 'El precio sin derecho no puede superar el máximo establecido.';
+		}
 
 		// Valido por si no cargó el archivo provado.
 		if ( $trabajo['archivo_privado'] == '' ) {
@@ -90,6 +101,18 @@ class Trabajos_model extends CI_Model
 	public function validarEditar($trabajo)
 	{
 		$errors = false;
+
+		// Valido precios.
+		$this->config->load('preciomax');
+		$precio_max = $this->config->load('preciomax');
+		if ( $trabajo['precio_con_derecho'] > $precio_max )
+		{
+			$errors['error_precio_derecho'] = 'El precio con derecho no puede superar el máximo establecido.';
+		}
+		if ( $trabajo['precio_sin_derecho'] > $precio_max )
+		{
+			$errors['error_precio_sin_derecho'] = 'El precio sin derecho no puede superar el máximo establecido.';
+		}
 
 		// Valido por si no cargó el archivo provado.
 		if ( $trabajo['archivo_privado'] == '' ) {
