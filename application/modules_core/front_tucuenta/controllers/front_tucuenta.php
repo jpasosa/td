@@ -615,6 +615,42 @@ class Front_tucuenta extends CI_class {
 			$user['telefono'] = '';
 		}
 
+		if($this->input->get_post('direccion_calle')) {
+			$user['direccion_calle'] = trim($this->input->get_post('direccion_calle'));
+		}else {
+			$user['direccion_calle'] = '';
+		}
+
+		if($this->input->get_post('direccion_numero')) {
+			$user['direccion_numero'] = trim($this->input->get_post('direccion_numero'));
+		}else {
+			$user['direccion_numero'] = '';
+		}
+
+		if($this->input->get_post('cod_postal')) {
+			$user['cod_postal'] = trim($this->input->get_post('cod_postal'));
+		}else {
+			$user['cod_postal'] = '';
+		}
+
+		if($this->input->get_post('localidad')) {
+			$user['localidad'] = trim($this->input->get_post('localidad'));
+		}else {
+			$user['localidad'] = '';
+		}
+
+		if($this->input->get_post('ciudad')) {
+			$user['ciudad'] = trim($this->input->get_post('ciudad'));
+		}else {
+			$user['ciudad'] = '';
+		}
+
+		if($this->input->get_post('pais')) {
+			$user['pais'] = trim($this->input->get_post('pais'));
+		}else {
+			$user['pais'] = '';
+		}
+
 		// if($this->input->get_post('estado')) {
 		// 	$user['estado'] = trim($this->input->get_post('estado'));
 		// }

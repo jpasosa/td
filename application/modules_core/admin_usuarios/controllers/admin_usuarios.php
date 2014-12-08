@@ -328,11 +328,50 @@ class Admin_usuarios extends MX_Controller {
 						$usuario['telefono'] = "";
 		}
 
+
+
 		if($this->input->post('esEditorial')){
 						$usuario['esEditorial'] = (int)$this->input->post('esEditorial');
 		}else{
 						$usuario['esEditorial'] = 0;
 		}
+
+		if($this->input->post('direccion_calle')) {
+			$usuario['direccion_calle'] = trim($this->input->post('direccion_calle'));
+		}else {
+			$usuario['direccion_calle'] = '';
+		}
+
+		if($this->input->post('direccion_numero')) {
+			$usuario['direccion_numero'] = trim($this->input->post('direccion_numero'));
+		}else {
+			$usuario['direccion_numero'] = '';
+		}
+
+		if($this->input->post('cod_postal')) {
+			$usuario['cod_postal'] = trim($this->input->post('cod_postal'));
+		}else {
+			$usuario['cod_postal'] = '';
+		}
+
+		if($this->input->post('localidad')) {
+			$usuario['localidad'] = trim($this->input->post('localidad'));
+		}else {
+			$usuario['localidad'] = '';
+		}
+
+		if($this->input->post('ciudad')) {
+			$usuario['ciudad'] = trim($this->input->post('ciudad'));
+		}else {
+			$usuario['ciudad'] = '';
+		}
+
+		if($this->input->post('pais')) {
+			$usuario['pais'] = trim($this->input->post('pais'));
+		}else {
+			$usuario['pais'] = '';
+		}
+
 
 
 		if(checkRol('administrador', $this->session)) {
@@ -392,6 +431,8 @@ class Admin_usuarios extends MX_Controller {
 								$usuario['estado'] = 0;
 				}
 		}
+
+
 
 		return $usuario;
 	}

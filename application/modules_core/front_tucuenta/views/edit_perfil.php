@@ -77,6 +77,34 @@
 					<?php endif;?>
 				</label>
 				<br />
+				<label class="avatar">DATOS DE ENTREGA (*)<br />
+				</label>
+				<br />
+				<label class="avatar">Dirección (calle)<br />
+					<input type="text" name="direccion_calle" value="<?php echo $user['direccion_calle']; ?>" />
+				</label>
+				<br />
+				<label class="avatar">Dirección (número)<br />
+					<input type="text" name="direccion_numero" value="<?php echo $user['direccion_numero']; ?>" />
+				</label>
+				<br />
+				<label class="avatar">Cod. Postal<br />
+					<input type="text" name="cod_postal" value="<?php echo $user['cod_postal']; ?>" />
+				</label>
+				<br />
+				<label class="avatar">Localidad<br />
+					<input type="text" name="localidad" value="<?php echo $user['localidad']; ?>" />
+				</label>
+				<br />
+				<label class="avatar">Ciudad<br />
+					<input type="text" name="ciudad" value="<?php echo $user['ciudad']; ?>" />
+				</label>
+				<br />
+				<label class="avatar">País<br />
+					<input type="text" name="pais" value="<?php echo $user['pais']; ?>" />
+				</label>
+				<br />
+
 				<!-- <input name="btSeleccionar" id="btSeleccionar" type="submit" value="Selecc." class="btn"/> -->
 				<br/>
 				<!--

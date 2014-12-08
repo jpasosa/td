@@ -400,7 +400,6 @@ class Repo_usuarios extends CI_Model
 			$user['fecha'] = str_replace('/', '-', $user['fecha']); // modifico este valor, por que si no, no convierte bien.
 			$user['fecha'] = date('Y-m-d',strtotime($user['fecha']));
 
-
 			$insert_user = $this->db->insert('Usuarios', $user);
 
 			if($insert_user) {
@@ -633,27 +632,35 @@ class Repo_usuarios extends CI_Model
 	{
 		try
 		{
+
+
 			$this->db->trans_begin();
 
 			$user['fecha'] = str_replace('/', '-', $user['fecha']); // modifico este valor, por que si no, no convierte bien.
 
 			$data = array(
-					'idUsuarios' 		=> $user['idUsuarios'],
+					'idUsuarios' 	=> $user['idUsuarios'],
 					'idRoles' 		=> $user['idRoles'],
 					'nombre'  		=> $user['nombre'],
 					'apellido' 		=> $user['apellido'],
 					'fecha' 			=> date('Y-m-d',strtotime($user['fecha'])),
 					'email' 			=> $user['email'],
 					'telefono'  		=> $user['telefono'],
+					'direccion_calle'  => $user['direccion_calle'],
+					'direccion_numero'=> $user['direccion_numero'],
+					'cod_postal'  	=> $user['cod_postal'],
+					'localidad'  		=> $user['localidad'],
+					'ciudad'  		=> $user['ciudad'],
+					'pais'  			=> $user['pais'],
 					// 'estado' 		=> $user['estado'],
-					'esEditorial' 		=> $user['esEditorial'],
+					'esEditorial' 	=> $user['esEditorial'],
 					//'esAutor' 		=> $user['esAutor'],
 					'intereses' 		=> $user['intereses'],
 					'avatar'			=> $this->saveAvatar($user['avatar']),
 					'lugar' 			=> $user['lugar'],
 					'profesion' 		=> $user['profesion'],
 					'biografia' 		=> $user['biografia'],
-					'observaciones' 	=> $user['observaciones'],
+					'observaciones' => $user['observaciones'],
 					);
 
 			if($user['del_avatar'] == 1) {

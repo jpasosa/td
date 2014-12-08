@@ -1,5 +1,21 @@
 
 
+
+-- Lunes 08 de diciembre del 2014
+-- Agrego campos de dirección para que el administrador sepa donde entregar.
+ALTER TABLE  `Usuarios` ADD  `direccion_calle` VARCHAR( 300 ) NULL AFTER  `clave` ,
+ADD  `direccion_numero` VARCHAR( 300 ) NULL AFTER  `direccion_calle` ,
+ADD  `cod_postal` VARCHAR( 300 ) NULL AFTER  `direccion_numero` ,
+ADD  `localidad` VARCHAR( 300 ) NULL AFTER  `cod_postal` ,
+ADD  `ciudad` VARCHAR( 300 ) NULL AFTER  `localidad` ,
+ADD  `pais` VARCHAR( 300 ) NULL AFTER  `ciudad`
+
+
+-- Lunes 08 de diciembre del 2014
+-- Agrego nombre a mostrar para visualizar en la parte pública de la web.
+ALTER TABLE  `Usuarios` ADD  `nombre_mostrar` VARCHAR( 300 ) NULL AFTER  `email`
+
+
 -- Miércoles 3 de diciembre
 -- Agrego para que introduzca nivel en la aplicación.
 

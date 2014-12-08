@@ -147,9 +147,9 @@ class Front_login extends CI_class {
 			# LOS DE SIEMPRE
 			$data['error_validate'] 	= false;
 			$data['login_user'] 		= (boolean)$this->login_user;
-			$data['section'] 			= $this->section; // en donde estamos
-			$data['body_id']			= 'crearcuenta';
-			$data['form_validate'] = base_url('/login/validate'); // para el login de la derecha
+			$data['section'] 		= $this->section; // en donde estamos
+			$data['body_id']		= 'crearcuenta';
+			$data['form_validate'] 	= base_url('/login/validate'); // para el login de la derecha
 			$data['form_validate_cuenta'] 	= base_url('/login/crear_cuenta');
 			$data['this'] 			= $this;
 			$data['title']				= 'WordRev - Publica, comparte y obten conocimiento';
@@ -235,18 +235,24 @@ class Front_login extends CI_class {
 
 	protected function getDataEmpty()
 	{
-		$user = array();
-		$user['user'] = '';
-		$user['apellido'] = '';
-		$user['email'] = '';
-		$user['pass'] = '';
+		$user 				= array();
+		$user['user'] 		= '';
+		$user['apellido']	= '';
+		$user['email'] 		= '';
+		$user['pass'] 		= '';
 		$user['repeat_pass'] = '';
-		$user['telefono'] = '';
-		$user['avatar'] = '';
-		$user['fecha'] = '';
-		$user['intereses'] = '';
-		$user['lugar'] = '';
-		$user['profesion'] = '';
+		$user['telefono']	= '';
+		$user['avatar'] 		= '';
+		$user['fecha'] 		= '';
+		$user['intereses']	= '';
+		$user['lugar'] 		= '';
+		$user['profesion']	= '';
+		$user['direccion_calle']= '';
+		$user['direccion_numero']= '';
+		$user['cod_postal']	= '';
+		$user['localidad']	= '';
+		$user['ciudad']		= '';
+		$user['pais']		= '';
 
 		return $user;
 	}
@@ -315,6 +321,43 @@ class Front_login extends CI_class {
 		} else {
 			$user['profesion'] = '';
 		}
+
+		if($this->input->get_post('direccion_calle')) {
+			$user['direccion_calle'] = trim($this->input->get_post('direccion_calle'));
+		}else {
+			$user['direccion_calle'] = '';
+		}
+
+		if($this->input->get_post('direccion_numero')) {
+			$user['direccion_numero'] = trim($this->input->get_post('direccion_numero'));
+		}else {
+			$user['direccion_numero'] = '';
+		}
+
+		if($this->input->get_post('cod_postal')) {
+			$user['cod_postal'] = trim($this->input->get_post('cod_postal'));
+		}else {
+			$user['cod_postal'] = '';
+		}
+
+		if($this->input->get_post('localidad')) {
+			$user['localidad'] = trim($this->input->get_post('localidad'));
+		}else {
+			$user['localidad'] = '';
+		}
+
+		if($this->input->get_post('ciudad')) {
+			$user['ciudad'] = trim($this->input->get_post('ciudad'));
+		}else {
+			$user['ciudad'] = '';
+		}
+
+		if($this->input->get_post('pais')) {
+			$user['pais'] = trim($this->input->get_post('pais'));
+		}else {
+			$user['pais'] = '';
+		}
+
 		$user['estado']			= 0;
 		$user['fecha_created_at'] = date('Y-m-d');
 		$user['verificacion']		= hash('md5', $user['email']);

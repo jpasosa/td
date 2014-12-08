@@ -89,12 +89,17 @@ class Usuarios_model extends CI_Model {
 										$this->db->set('esEditorial',$usuario['esEditorial']);
 						}
 
-						$dataUsuario = array(
-																				'nombre' => $usuario['nombre'],
-																				'apellido' => $usuario['apellido'],
-																				'email' => $usuario['email'],
-																				'telefono' => $usuario['telefono']
-																				);
+						$dataUsuario = array(		'nombre' 	=> $usuario['nombre'],
+													'apellido' 	=> $usuario['apellido'],
+													'email' 		=> $usuario['email'],
+													'telefono' 	=> $usuario['telefono'],
+													'direccion_calle' => $usuario['direccion_calle'],
+													'direccion_numero' => $usuario['direccion_numero'],
+													'cod_postal'=> $usuario['cod_postal'],
+													'localidad' 	=> $usuario['localidad'],
+													'ciudad' 	=> $usuario['ciudad'],
+													'pais' 		=> $usuario['pais']
+											);
 
 						if(isset($usuario['idRoles']) && $isAdmin){
 										$data['idRoles'] = (int)$usuario['idRoles'];
@@ -418,15 +423,21 @@ public function alta($usuario) {
 				}
 
 				$dataUsuario = array(
-																		'nombre' => $usuario['nombre'],
-																		'apellido' => $usuario['apellido'],
-																		'email' => $usuario['email'],
-																		'regalias' => $usuario['regalias'],
-																		'esAutor' =>$usuario['esAutor'],
-																		'esEditorial' =>$usuario['esEditorial'],
-																		'telefono' =>$usuario['telefono'],
-																		'estado' => $usuario['estado']
-																		);
+										'nombre' 			=> $usuario['nombre'],
+										'apellido' 			=> $usuario['apellido'],
+										'email' 				=> $usuario['email'],
+										'regalias' 			=> $usuario['regalias'],
+										'esAutor' 			=> $usuario['esAutor'],
+										'esEditorial' 		=> $usuario['esEditorial'],
+										'telefono' 			=> $usuario['telefono'],
+										'direccion_calle' 	=> $usuario['direccion_calle'],
+										'direccion_numero' => $usuario['direccion_numero'],
+										'cod_postal'		=> $usuario['cod_postal'],
+										'localidad' 			=> $usuario['localidad'],
+										'ciudad' 			=> $usuario['ciudad'],
+										'pais' 				=> $usuario['pais'],
+										'estado' 			=> $usuario['estado']
+										);
 
 				$this->db->insert('Usuarios',$dataUsuario);
 				$idUsuarios = $this->db->insert_id();
