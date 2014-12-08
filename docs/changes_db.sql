@@ -11,6 +11,25 @@ CREATE TABLE IF NOT EXISTS `FormasPago` (
   PRIMARY KEY (`idFormasPago`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+
+INSERT INTO  `FormasPago` (
+`idFormasPago` ,
+`nombre`
+)
+VALUES (
+NULL ,  'Transferencia'
+), (
+NULL ,  'Cheque'
+);
+
+INSERT INTO  `FormasPago` (
+`idFormasPago` ,
+`nombre`
+)
+VALUES (
+NULL ,  'Depósito'
+);
+
 ALTER TABLE  `Usuarios` ADD  `idFormasPago` INT( 10 ) NULL AFTER  `idRoles`;
 
 
