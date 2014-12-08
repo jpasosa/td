@@ -154,6 +154,7 @@ class Front_login extends CI_class {
 			$data['this'] 			= $this;
 			$data['title']				= 'WordRev - Publica, comparte y obten conocimiento';
 			$data['form_action_search'] = $this->form_action_search;
+			$data['formas_pago']	= $this->repo_usuarios->getFormasDePago();
 
 			if($this->input->server('REQUEST_METHOD') == 'GET') {
 				$usuario_nuevo = $this->getDataEmpty();
@@ -253,6 +254,7 @@ class Front_login extends CI_class {
 		$user['localidad']	= '';
 		$user['ciudad']		= '';
 		$user['pais']		= '';
+		$user['idFormasPago']	= 1;
 
 		return $user;
 	}
@@ -293,6 +295,12 @@ class Front_login extends CI_class {
 			$user['telefono'] = $this->input->post('telefono');
 		} else {
 			$user['telefono'] = '';
+		}
+
+		if ($this->input->post('idFormasPago')) {
+			$user['idFormasPago'] = $this->input->post('idFormasPago');
+		} else {
+			$user['idFormasPago'] = 1;
 		}
 
 

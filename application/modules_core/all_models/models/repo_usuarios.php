@@ -793,6 +793,24 @@ class Repo_usuarios extends CI_Model
 		}
 	}
 
+	/**
+	 * Agarro todas las formas de pago de la tabla FormasPago
+	 **/
+	public function getFormasDePago()
+	{
+		try {
+
+			$query = $this->db->get('FormasPago');
+			$formas_pago = $query->result_array();
+
+			return $formas_pago;
+
+		} catch (Exception $e) {
+			echo $e->getMessage();
+			exit(1);
+		}
+
+	}
 
 
 }
