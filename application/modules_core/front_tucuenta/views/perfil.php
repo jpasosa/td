@@ -10,7 +10,8 @@
 			<?php endif ?>
 		</p>
 		<h2>
-			<?php echo $perfil_and_works['usuario']['apellido'] . '  ' . $perfil_and_works['usuario']['nombre']; ?>
+			<?php //echo $perfil_and_works['usuario']['apellido'] . '  ' . $perfil_and_works['usuario']['nombre']; ?>
+			<?php echo $perfil_and_works['usuario']['nombre_mostrar']; ?>
 		</h2>
 		<p>
 			<?php echo $perfil_and_works['usuario']['intereses']; ?>
