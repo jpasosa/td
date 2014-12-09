@@ -193,7 +193,7 @@
 										<?php endif;?>
 
 										<div class="control-group formSep">
-												<label for="email" class="control-label">Regalias acumuladas</label>
+												<label for="email" class="control-label">Regalias acumuladas (U$D)</label>
 												<div class="controls">
 														<?php if(checkRol('administrador', $this->session)):?>
 																<input type="text" id="regalias" name="regalias" class="input-small" value="<?php if(isset($user['regalias'])) echo $user['regalias'];?>" />
@@ -202,6 +202,21 @@
 														<?php endif;?>
 												</div>
 										</div>
+
+										<div class="control-group formSep">
+											<label class="control-label">Forma de Pago </label>
+											<div class="controls text_line">
+													<select name="idFormasPago" id="idFormasPago">
+														<?php foreach($formas_pago AS $pago):?>
+															<option value="<?php echo $pago['idFormasPago'];?>" <?php if($pago['idFormasPago'] == $user['idFormasPago']) echo 'selected="selected"'; ?> >
+																<?php echo $pago['nombre'];?>
+															</option>
+														<?php endforeach;?>
+													</select>
+											</div>
+										</div>
+
+
 										<div class="control-group">
 												<div class="controls">
 												<button class="btn btn-gebo" id="save" type="submit">Guardar Cambios</button>

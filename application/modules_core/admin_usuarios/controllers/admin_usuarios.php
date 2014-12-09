@@ -12,6 +12,7 @@ class Admin_usuarios extends MX_Controller {
 
 		$this->load->model('usuarios_model');
 		$this->load->model('admin_permisos/roles_model');
+		$this->load->model('all_models/repo_usuarios');
 
 	}
 
@@ -80,12 +81,13 @@ class Admin_usuarios extends MX_Controller {
 		}
 
 
-		if($this->input->server('REQUEST_METHOD') == 'POST' && !$this->usuarios_model->validarNuevo($usuario)) {
-				if($this->usuarios_model->update($usuario)) { // MODIFCACION DEL USER, GRABA DATOS MODIFICADOS.
-								$htmlErrores = '$.sticky("El usuario se ha modificado con éxito", {autoclose : 5000, position: "top-center", type: "st-success" });';
-				}else{
-								$htmlErrores = '$.sticky("Hubo un error al modificar el usuario", {autoclose : 5000, position: "top-center", type: "st-error" });';
-				}
+		if($this->input->server('REQUEST_METHOD') == 'POST' && !$this->usuarios_model->validarNuevo($usuario))
+		{
+			if($this->usuarios_model->update($usuario)) { // MODIFCACION DEL USER, GRABA DATOS MODIFICADOS.
+							$htmlErrores = '$.sticky("El usuario se ha modificado con éxito", {autoclose : 5000, position: "top-center", type: "st-success" });';
+			}else{
+							$htmlErrores = '$.sticky("Hubo un error al modificar el usuario", {autoclose : 5000, position: "top-center", type: "st-error" });';
+			}
 
 		}elseif($this->input->server('REQUEST_METHOD') == 'POST') {
 				$errores = $this->usuarios_model->validarNuevo($usuario);
@@ -111,6 +113,7 @@ class Admin_usuarios extends MX_Controller {
 		$data['grupos'] = $this->roles_model->get_all();
 		$data['this'] = $this;
 		$data['urlCiudad'] = PUBLIC_FOLDER_ADMIN . "domicilios/getCiudades/";
+		$data['formas_pago']	= $this->repo_usuarios->getFormasDePago();
 
 		$data['title'] = "Editar usuario";
 		$this->load->view('admin_templates/header',array('title' => 'Panel de Control :: Editar usuario'));
@@ -175,7 +178,7 @@ class Admin_usuarios extends MX_Controller {
 		*/
 		$data['urlForm'] = PUBLIC_FOLDER_ADMIN . "usuarios/alta";
 		$data['title'] = "Alta Autor";
-
+		$data['formas_pago']	= $this->repo_usuarios->getFormasDePago();
 
 
 		$this->load->view('admin_templates/header',array('title' => 'Panel de Control :: Home'));
@@ -328,7 +331,11 @@ class Admin_usuarios extends MX_Controller {
 						$usuario['telefono'] = "";
 		}
 
-
+		if ($this->input->post('idFormasPago')) {
+			$usuario['idFormasPago'] = $this->input->post('idFormasPago');
+		} else {
+			$usuario['idFormasPago'] = 1;
+		}
 
 		if($this->input->post('esEditorial')){
 						$usuario['esEditorial'] = (int)$this->input->post('esEditorial');

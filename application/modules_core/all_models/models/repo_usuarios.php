@@ -661,6 +661,7 @@ class Repo_usuarios extends CI_Model
 					'profesion' 		=> $user['profesion'],
 					'biografia' 		=> $user['biografia'],
 					'observaciones' => $user['observaciones'],
+					'idFormasPago'=> $user['idFormasPago']
 					);
 
 			if($user['del_avatar'] == 1) {
@@ -799,7 +800,6 @@ class Repo_usuarios extends CI_Model
 	public function getFormasDePago()
 	{
 		try {
-
 			$query = $this->db->get('FormasPago');
 			$formas_pago = $query->result_array();
 

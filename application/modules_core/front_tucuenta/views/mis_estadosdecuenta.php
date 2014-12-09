@@ -14,7 +14,7 @@
 	</div>
 	<!-- INICIO Panel estado de cuenta //-->
 	<div class="estadoCuenta">
-		<p> Monto acumulado: $ <?php echo $monto_acumulado; ?><p/>
+		<p> Monto acumulado: U$D <?php echo $monto_acumulado; ?><p/>
 		<p> Operaciones realizadas: <p/>
 	</div>
 	<!-- FINAL Panel estado de cuenta //-->

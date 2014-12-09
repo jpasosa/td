@@ -70,6 +70,9 @@ class Usuarios_model extends CI_Model {
 						if(isset($usuario['intereses'])){
 										$this->db->set('intereses',$usuario['intereses']);
 						}
+						if(isset($usuario['idFormasPago'])){
+										$this->db->set('idFormasPago',$usuario['idFormasPago']);
+						}
 						if(isset($usuario['profesion'])){
 										$this->db->set('profesion',$usuario['profesion']);
 						}
@@ -436,7 +439,8 @@ public function alta($usuario) {
 										'localidad' 			=> $usuario['localidad'],
 										'ciudad' 			=> $usuario['ciudad'],
 										'pais' 				=> $usuario['pais'],
-										'estado' 			=> $usuario['estado']
+										'estado' 			=> $usuario['estado'],
+										'idFormasPago' 	=> $usuario['idFormasPago']
 										);
 
 				$this->db->insert('Usuarios',$dataUsuario);

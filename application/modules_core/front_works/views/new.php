@@ -198,7 +198,7 @@
 
 				<p>
 					<label>
-						Precio (valor máximo: USD <?php echo $preciomax; ?>)<br />
+						Precio (U$D) (Valor Máximo: U$D <?php echo $preciomax; ?>)<br />
 						<input type="number" name="precio_con_derecho" min="0" max="<?php echo $preciomax; ?>" value="<?php if (isset($work['precio_con_derecho'])): echo $work['precio_con_derecho']; endif; ?>" />
 					</label>
 				</p>

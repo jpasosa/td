@@ -175,7 +175,7 @@ class Front_works extends CI_class {
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['form_validate'] 	= base_url('/login/validate');
 			$data['form_action_search'] = $this->form_action_search;
-
+			$data['preciomax']		= $this->config->item('preciomax');
 			$message 				= "";
 
 			if($this->input->server('REQUEST_METHOD') == 'GET') { // Comienza a editar la publicación.

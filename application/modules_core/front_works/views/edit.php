@@ -127,6 +127,12 @@
 						<?php endforeach;?>
 					</select>
 				</p>
+				<p>
+					<label>
+						Precio (U$D) (Valor Máximo: U$D <?php echo $preciomax; ?>)<br />
+						<input type="number" name="precio_con_derecho" min="0" max="<?php echo $preciomax; ?>" value="<?php if (isset($work['precio_con_derecho'])): echo $work['precio_con_derecho']; endif; ?>" />
+					</label>
+				</p>
 				<!--
 				<label>Lista de Precios  <br />
 					<select name="idPrecios">

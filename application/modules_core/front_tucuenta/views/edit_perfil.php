@@ -105,6 +105,15 @@
 				</label>
 				<br />
 
+				<label class="avatar">Forma de Pago<br />
+				<select name="idFormasPago" id="idFormasPago" >
+					<?php foreach($formas_pago AS $pago):?>
+						<option value="<?php echo $pago['idFormasPago'];?>" <?php if($pago['idFormasPago'] == $user['idFormasPago']) echo 'selected="selected"'; ?> >
+							<?php echo $pago['nombre'];?>
+						</option>
+					<?php endforeach;?>
+				</select>
+
 				<!-- <input name="btSeleccionar" id="btSeleccionar" type="submit" value="Selecc." class="btn"/> -->
 				<br/>
 				<!--

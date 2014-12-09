@@ -9,11 +9,11 @@
 			<?php if (isset($regalias_totales_pagas)): ?>
 				<span>
 					Total Regalías No Pagadas:
-					<strong><?php echo $regalias_totales_no_pagas; ?></strong> <br />
+					<strong><?php echo ' U$D ' . $regalias_totales_no_pagas; ?></strong> <br />
 				</span>
 				<span>
 					Total Regalías Pagadas:
-					<strong><?php echo $regalias_totales_pagas; ?></strong>
+					<strong><?php echo ' U$D ' .$regalias_totales_pagas; ?></strong>
 				</span>
 			<?php endif; ?>
 
@@ -49,14 +49,14 @@
 									<?php echo $public['cantidad'];?>
 								</td>
 								<td>
-									<?php echo $public['regalias'];?>
+									<?php echo 'U$D ' .$public['regalias'];?>
 								</td>
 								<td>
-									<?php echo $public['regalias_pagadas'];?>
+									<?php echo 'U$D ' .$public['regalias_pagadas'];?>
 								</td>
 								<td>
 									<?php $tot = $public['regalias'] + $public['regalias_pagadas'];?>
-									<?php echo $tot;?>
+									<?php echo 'U$D ' .$tot;?>
 								</td>
 							</tr>
 						<?php endforeach;?>

@@ -418,6 +418,7 @@ class Front_tucuenta extends CI_class {
 			}
 			$data['section'] 			= $this->section; // en donde estamos
 			$data['form_validate'] 	= base_url('/login/validate');
+			$data['formas_pago']	= $this->repo_usuarios->getFormasDePago();
 
 			$message 				= "";
 
@@ -442,6 +443,7 @@ class Front_tucuenta extends CI_class {
 
 			if($this->input->server('REQUEST_METHOD') == 'POST' and !$errors)
 			{
+
 				if($this->repo_usuarios->update($user)) {
 					$message 		= 'El usuario se ha editado con éxito.';
 					$this->session->set_flashdata('message_success', $message);
@@ -683,6 +685,12 @@ class Front_tucuenta extends CI_class {
 			$user['intereses'] = trim($this->input->get_post('intereses'));
 		}else {
 			$user['intereses'] = '';
+		}
+
+		if ($this->input->get_post('idFormasPago')) {
+			$user['idFormasPago'] = $this->input->get_post('idFormasPago');
+		} else {
+			$user['idFormasPago'] = 1;
 		}
 
 		if($this->input->get_post('lugar')) {

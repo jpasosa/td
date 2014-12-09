@@ -42,7 +42,7 @@
 									<?php echo $public['cantidad'];?>
 								</td>
 								<td>
-									<?php echo $public['regalias'];?>
+									<?php echo 'U$D ' . $public['regalias'];?>
 								</td>
 							</tr>
 						<?php endforeach;?>

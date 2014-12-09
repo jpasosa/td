@@ -82,7 +82,7 @@
 							<td>
 								<?php echo $pago['nombre'] . ' ' . $pago['apellido'];?>
 							</td>
-							<td><?php echo $pago['monto_total'];?></td>
+							<td><?php echo 'U$D' . $pago['monto_total'];?></td>
 							<td>
 								<a href="<?php echo PUBLIC_FOLDER_ADMIN;?>pagos/ver_pago_realizado/<?php echo $pago['idPagos'];?>" class="sepV_a btn" title="Ver en detalle">
 									<i class="icon-search"></i>

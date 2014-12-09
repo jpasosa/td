@@ -75,8 +75,8 @@
 							</td>
 							<td><?php echo $comp['titulo'];?></td>
 							<td><?php echo $comp['emailAutor'];?></td>
-							<td><?php echo $comp['monto_al_autor'];?></td>
-							<td><?php echo $comp['monto_de_venta'];?></td>
+							<td><?php echo 'U$D' . $comp['monto_al_autor'];?></td>
+							<td><?php echo 'U$D' . $comp['monto_de_venta'];?></td>
 							<td>
 								<?php if ($comp['estado_regalias'] == 0): ?>
 									NO ASIGNADAS

@@ -50,7 +50,7 @@
                                                             No
                                                     <?php endif;?>
                                             </td>
-                                            <td><?php echo $usuario['regalias'];?></td>
+                                            <td><?php echo 'U$D ' . $usuario['regalias'];?></td>
                                             <td>
                                                 <a href="<?php echo PUBLIC_FOLDER_ADMIN;?>usuarios/editarPerfil/<?php echo $usuario['idUsuarios'];?>"
                                                     class="sepV_a btn" title="Editar">

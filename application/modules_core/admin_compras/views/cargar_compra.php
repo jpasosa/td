@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="control-group formSep">
-                        <label class="control-label">Monto Venta Total </label>
+                        <label class="control-label">Monto Venta Total (U$D)</label>
                         <div class="controls">
                             <input  type="text" class="input-xlarge" name="monto_venta_total"
                                 value="<?php if(isset($compras['monto_venta_total'])) echo $compras['monto_venta_total'];?>" />
@@ -96,7 +96,7 @@
 
 
                     <div class="control-group formSep">
-                        <label class="control-label">Monto al Autor </label>
+                        <label class="control-label">Monto al Autor (U$D)</label>
                         <div class="controls">
                             <input  type="text" id="monto_al_autor" class="input-xlarge" name="monto_al_autor" validate="true"
                                 value="<?php if(isset($compras['monto_al_autor'])) echo $compras['monto_al_autor'];?>" />

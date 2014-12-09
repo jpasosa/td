@@ -74,7 +74,7 @@
 							<td><?php echo date('d-m-Y',strtotime($comp['fecha']));?></td>
 							<td><?php echo $comp['email_comprador'];?></td>
 							<td><?php echo $comp['titulo'];?></td>
-							<td><?php echo $comp['monto_venta_total'];?></td>
+							<td><?php echo 'U$D' . $comp['monto_venta_total'];?></td>
 							<td><?php echo $comp['emailUsuariosAutor'];?></td>
 							<td>
 								<a href="<?php echo PUBLIC_FOLDER_ADMIN;?>compras/editar/<?php echo $comp['idPedidos'];?>" class="sepV_a btn" title="Cargar Compra">
