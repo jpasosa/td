@@ -112,7 +112,7 @@
 									<?php if(isset($trabajo['archivo_privado']) and !empty($trabajo['archivo_privado'])):?>
 										<input type="hidden" name="ori_archivo_privado" value="<?php echo $trabajo['archivo_privado'];?>">
 										<label class="uni-checkbox">
-											<a href="<?php echo '/' . UPLOADS.  "trabajos/archivos_privado/" . $trabajo['archivo_privado'];?>" target="_blank">
+											<a href="<?php echo base_url('/' . UPLOADS.  "trabajos/archivos_privado/" . $trabajo['archivo_privado']); ?>" target="_blank">
 												<?php echo $trabajo['archivo_privado'];?>
 											</a>
 											<?php if ($this->uri->segment(3) == 'editar'): ?> <!-- solamente en EDIT se puede eliminar el archivo -->
