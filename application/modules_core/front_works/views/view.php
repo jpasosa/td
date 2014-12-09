@@ -36,9 +36,9 @@
 					<?php elseif(isset($work['autor']['avatar']) && $work['autor']['avatar'] != ''): ?>
 						<img src="<?php echo UPLOADS . 'usuarios/avatar/' . $work['autor']['avatar'] ?>" alt="Autor" width="52" height="30" />
 					<?php endif; ?>
-					<?php if (isset($work['autor']['apellido']) && isset($work['autor']['apellido'])): ?>
+					<?php if (isset($work['autor']['nombre_mostrar']) ): ?>
 						<a href="<?=site_url('tucuenta/perfil/' . $work['autor']['idUsuarios']);?>">
-							<?php echo $work['autor']['apellido'] . ', ' . $work['autor']['nombre']; ?>
+							<?php echo $work['autor']['nombre_mostrar']; ?>
 						</a>
 					<?php endif ?>
 				</a>

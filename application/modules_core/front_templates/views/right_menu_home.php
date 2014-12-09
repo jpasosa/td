@@ -63,7 +63,7 @@
 					<div>
 						<?php foreach ($autores AS $aut): ?>
 							<a href="<?=site_url('tucuenta/perfil/' . $aut['idUsuarios']);?>">
-								<?php echo $aut['apellido'] . ', ' . $aut['nombre']; ?>
+								<?php echo $aut['nombre_mostrar']; ?>
 							</a>
 						<?php endforeach ?>
 					</div>
