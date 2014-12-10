@@ -592,6 +592,10 @@ class Repo_usuarios extends CI_Model
 			$errors['apellido'] = 'El apellido es obligatorio';
 		}
 
+		if(!isset($user['nombre_mostrar']) || ( isset($user['nombre_mostrar']) && $user['nombre_mostrar'] == '' ) ) {
+			$errors['nombre_mostrar'] = 'El nombre a mostrar es obligatorio';
+		}
+
 		if ( isset($user['avatar']) && mb_strlen($user['avatar']) > 100 ) {
 			$errors['avatar'] = 'El nombre de la imágen del avatar es muy largo';
 		}
@@ -643,6 +647,7 @@ class Repo_usuarios extends CI_Model
 					'idRoles' 		=> $user['idRoles'],
 					'nombre'  		=> $user['nombre'],
 					'apellido' 		=> $user['apellido'],
+					'nombre_mostrar'=> $user['nombre_mostrar'],
 					'fecha' 			=> date('Y-m-d',strtotime($user['fecha'])),
 					'email' 			=> $user['email'],
 					'telefono'  		=> $user['telefono'],

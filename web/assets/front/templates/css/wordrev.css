@@ -285,7 +285,7 @@ rojos ff3019 - cf0404
 /******************* CONTENT REGISTRO *********************/
 #contentRegistro { /*** el resto de los detalles estan con contentlogin ***/
 	width: 400px;
-	height: 980px; /*subi el height*/
+	height: 1060px; /*subi el height*/
 	background-color: #E3E3E3;
 	color:#660000;
 	padding: 20px 6px 20px 20px;
@@ -438,7 +438,7 @@ rojos ff3019 - cf0404
 /******************* CONTENT PERFIL DATOS *********************/
 #contentPerfil, #contentPermisos, #contentPublicar { /*** el resto de los detalles estan con contentlogin ***/
 	width: 730px;
-	height: 650px;
+	height: 680px;
 	/*background-color:#E3E3E3;*/
 	color:#660000;
 	padding: 20px 20px 20px 20px;

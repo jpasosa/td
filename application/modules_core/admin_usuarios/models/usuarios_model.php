@@ -94,6 +94,7 @@ class Usuarios_model extends CI_Model {
 
 						$dataUsuario = array(		'nombre' 	=> $usuario['nombre'],
 													'apellido' 	=> $usuario['apellido'],
+													'nombre_mostrar' 	=> $usuario['nombre_mostrar'],
 													'email' 		=> $usuario['email'],
 													'telefono' 	=> $usuario['telefono'],
 													'direccion_calle' => $usuario['direccion_calle'],
@@ -255,6 +256,9 @@ class Usuarios_model extends CI_Model {
 				if(!isset($usuario['apellido']) or  empty($usuario['apellido']) )   {
 								$error['apellido'] = 'El apellido es obligatorio';
 				}
+				if(!isset($usuario['nombre_mostrar']) or  empty($usuario['nombre_mostrar']) )   {
+								$error['nombre_mostrar'] = 'El nombre a mostrar es obligatorio';
+				}
 				if(!isset($usuario['email']) or empty($usuario['email']) )   {
 								$error['email'] = 'El email es obligatorio';
 				}elseif (!$this->email->valid_email($usuario['email'])) {
@@ -293,6 +297,9 @@ class Usuarios_model extends CI_Model {
 				if(!isset($usuario['apellido'])){
 					$errors['apellido'] = true;
 				}
+				if(!isset($usuario['nombre_mostrar'])){
+					$errors['nombre_mostrar'] = true;
+				}
 				if (!isset($usuario['email'])) {
 					$errors['email'] = true;
 				}elseif (!$this->email->valid_email($usuario['email'])) {
@@ -304,6 +311,7 @@ class Usuarios_model extends CI_Model {
 				}elseif (!preg_match("/^[0-9-]+$/", $usuario['telefono'])) {
 					$errors['telefono_incorrecto'] = true;
 				}
+
 
 				return $errors;
 		}
@@ -428,6 +436,7 @@ public function alta($usuario) {
 				$dataUsuario = array(
 										'nombre' 			=> $usuario['nombre'],
 										'apellido' 			=> $usuario['apellido'],
+										'nombre_mostrar' 	=> $usuario['nombre_mostrar'],
 										'email' 				=> $usuario['email'],
 										'regalias' 			=> $usuario['regalias'],
 										'esAutor' 			=> $usuario['esAutor'],

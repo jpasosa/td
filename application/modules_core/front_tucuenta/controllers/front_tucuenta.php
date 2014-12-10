@@ -416,7 +416,7 @@ class Front_tucuenta extends CI_class {
 			} else {
 				redirect('');
 			}
-			$data['section'] 			= $this->section; // en donde estamos
+			$data['section'] 		= $this->section; // en donde estamos
 			$data['form_validate'] 	= base_url('/login/validate');
 			$data['formas_pago']	= $this->repo_usuarios->getFormasDePago();
 
@@ -596,6 +596,12 @@ class Front_tucuenta extends CI_class {
 			$user['nombre'] = trim($this->input->get_post('nombre'));
 		}else {
 			$user['nombre'] = '';
+		}
+
+		if($this->input->get_post('nombre_mostrar')) {
+			$user['nombre_mostrar'] = trim($this->input->get_post('nombre_mostrar'));
+		}else {
+			$user['nombre_mostrar'] = '';
 		}
 
 		if($this->input->get_post('apellido')) {

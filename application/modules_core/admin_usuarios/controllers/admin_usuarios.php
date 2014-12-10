@@ -299,26 +299,28 @@ class Admin_usuarios extends MX_Controller {
 		$usuario = array();
 
 		if($this->input->get_post('idUsuarios')){
-						$usuario['idUsuarios'] = $this->input->get_post('idUsuarios');
+			$usuario['idUsuarios'] = $this->input->get_post('idUsuarios');
 		}
 		elseif ($this->uri->segment(4)) {
-						$usuario['idUsuarios'] = $this->uri->segment(4);
+			$usuario['idUsuarios'] = $this->uri->segment(4);
 		}
 
 		if($this->input->post('nombre')){
-						$usuario['nombre'] = $this->input->post('nombre');
+			$usuario['nombre'] = $this->input->post('nombre');
 		}
 
 		if($this->input->post('apellido')){
-						$usuario['apellido'] = $this->input->post('apellido');
+			$usuario['apellido'] = $this->input->post('apellido');
 		}
-
+		if($this->input->post('nombre_mostrar')){
+			$usuario['nombre_mostrar'] = $this->input->post('nombre_mostrar');
+		}
 		if($this->input->post('email')){
-						$usuario['email'] = $this->input->post('email');
+			$usuario['email'] = $this->input->post('email');
 		}
 
 		if($this->input->post('clave')){
-						$usuario['clave'] = $this->input->post('clave');
+			$usuario['clave'] = $this->input->post('clave');
 		}
 
 		if($this->input->post('clave_re')){
@@ -326,9 +328,9 @@ class Admin_usuarios extends MX_Controller {
 		}
 
 		if($this->input->post('telefono')){
-						$usuario['telefono'] = $this->input->post('telefono');
+			$usuario['telefono'] = $this->input->post('telefono');
 		}else{
-						$usuario['telefono'] = "";
+			$usuario['telefono'] = "";
 		}
 
 		if ($this->input->post('idFormasPago')) {
@@ -338,9 +340,9 @@ class Admin_usuarios extends MX_Controller {
 		}
 
 		if($this->input->post('esEditorial')){
-						$usuario['esEditorial'] = (int)$this->input->post('esEditorial');
+			$usuario['esEditorial'] = (int)$this->input->post('esEditorial');
 		}else{
-						$usuario['esEditorial'] = 0;
+			$usuario['esEditorial'] = 0;
 		}
 
 		if($this->input->post('direccion_calle')) {
@@ -571,6 +573,10 @@ class Admin_usuarios extends MX_Controller {
 
 		if(isset($errores['apellido'])){
 						$htmlErrores .= '$.sticky("El apellido es obligatorio", {autoclose : 5000, position: "top-center", type: "st-error" });';
+		}
+
+		if(isset($errores['nombre_mostrar'])){
+						$htmlErrores .= '$.sticky("El nombre a mostrar es obligatorio", {autoclose : 5000, position: "top-center", type: "st-error" });';
 		}
 
 		if(isset($errores['email'])){

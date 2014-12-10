@@ -24,13 +24,22 @@
 								</a>
 							</div>
 							<div class="controls">&nbsp;</div>
-								<label for="apellido" class="control-label">Apellido</label>
-								<div class="controls">
-									<input type="text" id="apellido" name="apellido" class="input-xlarge"
-																	value="<?php if(isset($user['apellido'])) echo $user['apellido'];?>" />
-											<a href="#" class="required" rel="tooltip" data-placement="right" title="El apellido es requerido"><span class="f_req">*</span> </a>
-									</div>
+							<label for="apellido" class="control-label">Apellido</label>
+							<div class="controls">
+								<input type="text" id="apellido" name="apellido" class="input-xlarge"
+																value="<?php if(isset($user['apellido'])) echo $user['apellido'];?>" />
+								<a href="#" class="required" rel="tooltip" data-placement="right" title="El apellido es requerido"><span class="f_req">*</span> </a>
 							</div>
+							<div class="controls">&nbsp;</div>
+							<label for="apellido" class="control-label">Nombre a Mostrar</label>
+							<div class="controls">
+								<input type="text" id="nombre_mostrar" name="nombre_mostrar" class="input-xlarge"
+											value="<?php if(isset($user['nombre_mostrar'])) echo $user['nombre_mostrar'];?>" />
+								<a href="#" class="required" rel="tooltip" data-placement="right" title="El nombre a mostrar es requerido">
+									<span class="f_req">*</span>
+								</a>
+							</div>
+						</div>
 
 							<div class="control-group formSep">
 									<label for="email" class="control-label">Email</label>

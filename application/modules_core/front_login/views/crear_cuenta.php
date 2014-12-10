@@ -21,6 +21,10 @@
 				<input type="text" name="apellido" value="<?php echo $usuario_nuevo['apellido']; ?>" />
 			</label>
 			<br />
+			<label>Nombre a Mostrar (*)<br />
+				<input type="text" name="nombre_mostrar" value="<?php echo $usuario_nuevo['nombre_mostrar']; ?>" />
+			</label>
+			<br />
 			<label>Dirección de correo (*)<br />
 				<input type="text" name="email" value="<?php echo $usuario_nuevo['email']; ?>" />
 			</label>
@@ -52,6 +56,7 @@
 				<input type="text" name="profesion" value="<?php echo $usuario_nuevo['profesion']; ?>" />
 			</label>
 			<label class="avatar">DATOS DE ENTREGA (*)<br />
+			Importante: No olvides colocar tu dirección real, es donde recibirás tus pagos!
 			</label>
 			<br />
 			<label class="avatar">Dirección (calle)<br />

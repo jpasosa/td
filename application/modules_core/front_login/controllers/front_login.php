@@ -163,7 +163,9 @@ class Front_login extends CI_class {
 			if($this->input->server('REQUEST_METHOD') == 'POST' && $this->input->post('user') && $this->input->post('email')
 				&& $this->input->post('pass') && $this->input->post('repeat_pass') )
 			{
+				// VALIDO ACÁ DIRECTAMENTE
 				$user 			= $this->input->post('user');
+				$nombre_mostrar=$this->input->post('nombre_mostrar');
 				$email 			= $this->input->post('email');
 				$pass 			= $this->input->post('pass');
 				$repeat_pass 	= $this->input->post('repeat_pass');
@@ -175,6 +177,9 @@ class Front_login extends CI_class {
 					if($pass != $repeat_pass) {
 						$data['error_validate'] 	= true;
 						$data['error_campos'] 	= 'Las contraseñas no conciden';
+					} else if ( $nombre_mostrar == '') {
+						$data['error_validate'] 	= true;
+						$data['error_campos'] 	= 'El nombre a mostrar es obligatorio';
 					} else {
 						$data['error_validate'] 	= false;
 					}
@@ -239,6 +244,7 @@ class Front_login extends CI_class {
 		$user 				= array();
 		$user['user'] 		= '';
 		$user['apellido']	= '';
+		$user['nombre_mostrar']	= '';
 		$user['email'] 		= '';
 		$user['pass'] 		= '';
 		$user['repeat_pass'] = '';
@@ -272,6 +278,11 @@ class Front_login extends CI_class {
 			$user['apellido'] = $this->input->post('apellido');
 		} else {
 			$user['apellido'] = '';
+		}
+		if ($this->input->post('nombre_mostrar')) {
+			$user['nombre_mostrar'] = trim($this->input->post('nombre_mostrar'));
+		} else {
+			$user['nombre_mostrar'] = '';
 		}
 		if ($this->input->post('email')) {
 			$user['email'] = $this->input->post('email');
