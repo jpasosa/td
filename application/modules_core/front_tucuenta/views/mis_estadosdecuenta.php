@@ -52,6 +52,11 @@
 			</div>
 		<?php endforeach; ?>
 	</div>
+	<p>
+		Aquí verás reflejadas tus ganancias, ya sea por ventas finales o ventas por período de suscripción. En cuanto a las ventas finales se liquidarán al mes siguiente, en cuanto a las ventas por suscripción la liquidación puede demorar hasta 3 meses, de acuerdo a la liquidación que nos hagan nuestros proveedores. De todas formas verás acreditadas tus ganancias lo más rápido posible.
+		<strong>Importante: No olvide colocar su dirección real, es donde recibirá su pago!</strong>
+		<br />
+	</p>
 	<!-- FINAL Presentacion de CATEGORIA //-->
 	<div class="paginador"><?php echo $paginador; ?></div>
 </td>
