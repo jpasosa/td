@@ -247,6 +247,9 @@ class Trabajos_model extends CI_Model
 
 			$this->db->trans_begin();
 
+
+
+
 			// $indice = isset($trabajo['indice']) ? $trabajo['indice']  : "";
 
 
@@ -336,10 +339,14 @@ class Trabajos_model extends CI_Model
 			}
 
 			if(isset($trabajo['archivo_privado']) && !empty($trabajo['archivo_privado'])){
+
 				if(isset($trabajo['ori_archivo_privado'])){
 					$this->eliminarArchivo($trabajo['ori_archivo_privado']);
 				}
-				$archivo_privado = $this->guardarArchivo('archivo_privado',$trabajo['archivo_privado']);
+
+
+				$archivo_privado = $this->guardarArchivo_v2('archivo_privado',$trabajo['archivo_privado']);
+
 				$this->db->set('archivo_privado',$archivo_privado);
 			} elseif(isset($trabajo['ori_archivo_privado'])){
 				//$this->eliminarArchivo($trabajo['ori_archivo_privado']);
@@ -532,6 +539,61 @@ class Trabajos_model extends CI_Model
 				} else {
 					return "";
 				}
+			// ARCHIVOS PUBLICOS
+			}elseif( isset($_FILES[$tipo]) && $tipo == 'archivo_publico' && !empty($archivo) ) {
+				if(move_uploaded_file($_FILES[$tipo]['tmp_name'], "web/uploads/trabajos/archivos_publico/$archivo")) {
+					// print_r($_FILES[$tipo]);
+					return $archivo;
+				} else {
+					return "";
+				}
+			// ARCHIVOS VISTA PREVIA
+			}elseif( isset($_FILES[$tipo]) && $tipo == 'archivo_vista_previa' && !empty($archivo) ) {
+				if(move_uploaded_file($_FILES[$tipo]['tmp_name'], "web/uploads/trabajos/archivos_vista_previa/$archivo")) {
+					// print_r($_FILES[$tipo]);
+					return $archivo;
+				} else {
+					return "";
+				}
+
+			} else {
+				return "";
+			}
+
+		} catch (Exception $e) {
+			return "";
+		}
+	}
+
+	/**
+	 * hago una versión 2 de este método, por que había cosas que no funcioonaban.
+	 * Por las dudas dejo la original, por que de algunos lados la siguen llamando y funciona bien.
+	 *
+	 * @team 	Allytech
+	 * @author 	jpasosa@gmail.com
+	 * @date 	11 de diciembre del 2014
+	 **/
+	public function guardarArchivo_v2 ($tipo, $archivo)
+	{
+		try {
+
+			// ARCHIVOS PRIVADOS
+			if( $tipo == 'archivo_privado'  )
+			{
+				if ( isset($_FILES[$tipo]) && $_FILES[$tipo]['tmp_name'] != ''  )
+				{
+					if(move_uploaded_file($_FILES[$tipo]['tmp_name'], "web/uploads/trabajos/archivos_privado/$archivo")) {
+						// print_r($_FILES[$tipo]);
+						return $archivo;
+					} else {
+						return "";
+					}
+				} elseif (!empty($archivo)) {
+					return $archivo;
+				} else {
+					return '';
+				}
+
 			// ARCHIVOS PUBLICOS
 			}elseif( isset($_FILES[$tipo]) && $tipo == 'archivo_publico' && !empty($archivo) ) {
 				if(move_uploaded_file($_FILES[$tipo]['tmp_name'], "web/uploads/trabajos/archivos_publico/$archivo")) {

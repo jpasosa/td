@@ -84,6 +84,9 @@ class Admin_trabajos extends MX_Controller
 		$errors = $this->trabajos_model->validarEditar($trabajo);
 		if($this->input->server('REQUEST_METHOD') == 'POST' and !$errors)
 		{ // edit SIN ERRORES
+
+
+
 			if($this->trabajos_model->editar($trabajo)) {
 				if(isset($trabajo['idEstados']) && $trabajo['idEstados'] == 2  && $trabajo['notificado'] == 1 )
 				{ // NOTIFICA
@@ -118,6 +121,7 @@ class Admin_trabajos extends MX_Controller
 		}
 
 		$trabajo = $this->trabajos_model->get($trabajo);
+
 		$data['trabajo'] 		= $trabajo;
 		// $data['precios'] 		= $this->precios_model->getAll();
 		$data['categorias'] 	= $this->categorias_model->getAll();
@@ -167,6 +171,7 @@ class Admin_trabajos extends MX_Controller
 		} elseif($this->uri->segment(4)){
 			$trabajo['idTrabajos'] = (int)$this->uri->segment(4);
 		}
+
 
 
 		if($this->input->post('titulo')) {
@@ -288,7 +293,9 @@ class Admin_trabajos extends MX_Controller
 		if(isset($_FILES['archivo_privado']['tmp_name']) and !empty($_FILES['archivo_privado']['tmp_name'])){
 			$trabajo['archivo_privado'] = sha1(md5(uniqid())). "_".$_FILES['archivo_privado']['name'];
 		} else{
-			$trabajo['archivo_privado'] = "";
+			$tmp_trabajo = $this->trabajos_model->get($trabajo);
+			$trabajo['archivo_privado'] = $tmp_trabajo['archivo_privado'];
+			// $trabajo['archivo_privado'] = "";
 		}
 		// EL NOMBRE
 		if($this->input->post('ori_archivo_privado')){
@@ -330,7 +337,6 @@ class Admin_trabajos extends MX_Controller
 			$trabajo['ori_archivo_publico'] = $this->input->post('ori_archivo_publico');
 		}
 		//
-
 
 
 

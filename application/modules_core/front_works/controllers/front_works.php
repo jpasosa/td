@@ -64,7 +64,6 @@ class Front_works extends CI_class {
 				$work = $this->getData();
 			}
 
-
 			$errors = $this->works_model->validate($work);
 
 			if($this->input->server('REQUEST_METHOD') == 'POST' and !$errors)
@@ -674,7 +673,8 @@ class Front_works extends CI_class {
 			}
 		}
 		// ARCHIVO PRIVADO
-		if(isset($_FILES['archivo_privado']['tmp_name']) and !empty($_FILES['archivo_privado']['tmp_name'])){
+		if(isset($_FILES['archivo_privado']['tmp_name']) and !empty($_FILES['archivo_privado']['tmp_name']))
+		{
 			$work['archivo_privado'] = sha1(md5(uniqid())). "_".$_FILES['archivo_privado']['name'];
 			$work['archivo_privado_para_mostrar'] = '. . . ' . substr($work['archivo_privado'], -25);
 		} else{
@@ -706,8 +706,6 @@ class Front_works extends CI_class {
 		// } else {
 		// 	$work['archivo_publico'] = "";
 		// }
-
-
 
 
 		return $work;

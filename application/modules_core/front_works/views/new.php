@@ -46,17 +46,12 @@
 					<!-- <span class="btn btn-file" style="font-size: 11px;" name="btSeleccionar" id="btSeleccionar" > -->
 						Selecc
 						<input type="file" name="archivo_privado" />
-						<input type="hidden" name="name_privado" value="<?php if (isset($work['archivo_privado'])): echo $work['archivo_privado']; endif; ?>">
+						<!-- <input type="hidden" name="name_privado" value="<?php if (isset($work['archivo_privado'])): echo $work['archivo_privado']; endif; ?>"> -->
 					<!-- </span> -->
 					<!-- <input type="file" name="archivo_privado"> -->
 				</label><br />
 
-				<?php if(isset($work['archivo_privado']) && !empty($work['archivo_privado']) && !isset($valid_file_privado)):?>
-					<!-- <input type="hidden" name="ori_archivo_privado" value="<?php echo $work['archivo_privado'];?>"> -->
-					<a title="<?php echo $work['archivo_privado']; ?>" style="font-size: 9px;" href="<?php echo RAIZ . UPLOADS.  "trabajos/archivos_privado/" . $work['archivo_privado'];?>" target="_blank">
-						<?php if (isset($work['archivo_privado_para_mostrar'])): echo $work['archivo_privado_para_mostrar']; endif; ?>
-					</a>
-				<?php endif;?>
+
 					<!-- <input name="btSeleccionar" id="btSeleccionar" type="submit" value="Selecc." class="btn" /> -->
 				<br/>
 				<!-- ARCHIVO VISTA PREVIA PARA EDITORIALES -->
