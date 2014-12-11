@@ -46,7 +46,7 @@
 					<!-- <span class="btn btn-file" style="font-size: 11px;" name="btSeleccionar" id="btSeleccionar" > -->
 						Selecc
 						<input type="file" name="archivo_privado" />
-						<!-- <input type="hidden" name="name_privado" value="<?php if (isset($work['archivo_privado'])): echo $work['archivo_privado']; endif; ?>"> -->
+						<!-- <input type="hidden" name="name_privado" value="<?php // if (isset($work['archivo_privado'])): echo $work['archivo_privado']; endif; ?>"> -->
 					<!-- </span> -->
 					<!-- <input type="file" name="archivo_privado"> -->
 				</label><br />

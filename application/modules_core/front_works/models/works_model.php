@@ -43,6 +43,7 @@ class Works_model extends CI_Model
 					// 'idPrecios' 			=> $work['idPrecios'],
 					'notificado' 				=> $work['notificado']
 					);
+
 			$this->db->insert('Trabajos',$data);
 
 			if(isset($work['sub_category']) && count($work['sub_category']) > 0) {
