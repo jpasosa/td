@@ -4,7 +4,7 @@
 $config['emailFrom'] 			= 'no-reply@allytech.com';
 $config['email_programador'] 	= '';
 $config['email_sistemas']		= 'sistemas@zerodigital.com.ar';
-$config['email_admin']			= 'admin@wordrev.com';
+$config['email_admin']			= 'WordRev';
 
 
 ?>
