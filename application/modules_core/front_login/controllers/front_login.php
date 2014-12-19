@@ -192,11 +192,8 @@ class Front_login extends CI_class {
 				{
 					if($this->repo_usuarios->create($usuario_nuevo)) {
 						// ENVIO DE MAIL
-						$mail['to'] 		= $usuario_nuevo['email'];
-						$mail['title'] 	= 'Activación de Cuenta - Hacer click en el link';
-						$mail['body'] 	= 'Para poder activar su cuenta, haga click, en el siguiente link: ' . base_url() . 'login/activar_cuenta/' . $usuario_nuevo['verificacion'];
+						$envia_mail = $this->send_email_new_account($usuario_nuevo);
 
-						$envia_mail = $this->sendMail($mail);
 						if($envia_mail) {
 							$message = 'Se ha creado el usuario con éxito, y se envió un mail de verificación';
 							$this->session->set_flashdata('work_success', $message);
@@ -480,6 +477,34 @@ class Front_login extends CI_class {
 		}
 
 		$data['form_action_search'] = $this->form_action_search;
+	}
+
+
+	public function send_email_new_account( $user )
+	{
+		$data['link'] 	= base_url('login/activar_cuenta/' . $user['verificacion']);
+		$data['name'] 	= $user['email'];
+
+		$message = $this->load->view('front_login/template_activacion_cuenta',$data,TRUE); // this will return you html data as message
+
+		$this->load->library('email');
+		$config = array (
+							'mailtype' => 'html',
+							'charset'  => 'utf-8',
+							'priority' => '1'
+						);
+        	$this->email->initialize($config);
+
+		$this->email->from($this->config->item('email_admin'));
+		$this->email->to($user['email']);
+		$this->email->subject('Activación de Cuenta - Hacer click en el link');
+		$this->email->message($message);
+		if($this->email->send()) {
+			return true;
+		}else {
+			return false;
+		}
+
 	}
 
 	// GUARDA LA FOTO
