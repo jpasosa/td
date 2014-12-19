@@ -12,7 +12,7 @@
   </tr>
   <tr>
     <td>
-	  <font face="Verdana, Arial, Sans Serif" size="2"><p>Estimado/a: (nombre)</p></font>
+	  <font face="Verdana, Arial, Sans Serif" size="2"><p>Estimado/a: <?php echo $name; ?></p></font>
       <font face="Verdana, Arial, Sans Serif" size="2"><p>Hemos recibido tu publicación y está pendiente de aprobación, en menos de 24hs. la verás online!</p></font>
       <font face="Verdana, Arial, Sans Serif" size="2">
       <p>&nbsp;</p>
