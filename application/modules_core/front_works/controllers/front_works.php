@@ -820,12 +820,8 @@ class Front_works extends CI_class {
 			}else if($user['idRoles'] == 2) // USER COMUN // Debe enviar mail al user y al admin.
 			{
 				// Mail al USER
-				$data_mail['title'] 	= 'Creaste una publicación. Está pendiente de Aprobación.';
-				// $data_mail['body'] 	= $user['nombre'] . ' ' . $user['apellido'] . ' ' . ' Tu trabajo de titulo ' . $work['titulo'] . 'esta pendiente de aprobación. Vas a ser notificado cuando sea aprobado por el administrador.';;
-				$data_mail['body'] 	= 'Tu publicación de titulo ' . $work['titulo'] . ' está pendiente de aprobación. Te enviaremos un mail cuando ya la publiquemos. 					Muchas gracias.';
-				$data_mail['from'] 	= $this->config->item('email_admin');
-				$data_mail['to'] 		= $user['email'];
-				$this->sendMail($data_mail);
+				$this->send_email_new_work($user);
+
 				// Mail al ADMIN
 				$data_mail['title'] 	= 'Crearon una publicación, pendiente de aprobación.';
 				$data_mail['body'] 	= 'Crearon una publicación de título ' . $work['titulo'] . '. Está pendiente de aprobación';
@@ -865,7 +861,32 @@ class Front_works extends CI_class {
 
 
 
+	public function send_email_new_work( $user )
+	{
+		$data['name'] 	= $user['email'];
 
+		$message = $this->load->view('front_works/template_alta_publicacion',$data,TRUE);
+
+		$this->load->library('email');
+		$config = array (
+							'mailtype' => 'html',
+							'charset'  => 'utf-8',
+							'priority' => '1'
+						);
+		$this->email->initialize($config);
+
+		$this->email->from($this->config->item('email_admin'));
+		$this->email->to($user['email']);
+		$this->email->subject('Creaste una publicación. Está pendiente de Aprobación.');
+		$this->email->message($message);
+
+		if($this->email->send()) {
+			return true;
+		}else {
+			return false;
+		}
+
+	}
 
 
 
