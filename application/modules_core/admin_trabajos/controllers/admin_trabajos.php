@@ -694,7 +694,10 @@ class Admin_trabajos extends MX_Controller
 
 
 
-					$this->notifyUser($user['email'], $trabajo_reg['titulo']);
+					// $this->notifyUser($user['email'], $trabajo_reg['titulo']);
+					$this->notifyUser($user['email'], $trabajo_reg['idTrabajos']);
+
+
 
 					$json = array(
 						'mensaje' => 'El trabajo se ha aprobado con éxito y se ha enviado un mail',
@@ -729,19 +732,24 @@ class Admin_trabajos extends MX_Controller
 	}
 
 
-	public function notifyUser($user_mail, $work_title) {
+	public function notifyUser($user_mail, $work_id) {
 		try {
 			if(!isLogged($this->session) and !checkRol('administrador', $this->session)){
 				redirect('admin/login');
 			}
-			$this->load->library('email');
-			$this->email->from($this->config->item('email_admin'));
-			$this->email->to($user_mail, $this->config->item('email_programador')); // aca debe ir $user_mail
-			// $this->email->cc('another@another-example.com');
-			// $this->email->bcc('them@their-example.com');
-			$this->email->subject('Trabajo Aprobado de Textosdigitales');
-			$this->email->message($user_mail . ' tu trabajo de titulo "' . $work_title . ' " ha sido aprobado');
-			if($this->email->send())	 {
+
+
+
+
+			// $this->load->library('email');
+			// $this->email->from($this->config->item('email_admin'));
+			// $this->email->to($user_mail, $this->config->item('email_programador')); // aca debe ir $user_mail
+			// // $this->email->cc('another@another-example.com');
+			// // $this->email->bcc('them@their-example.com');
+			// $this->email->subject('Trabajo Aprobado de Textosdigitales');
+			// $this->email->message($user_mail . ' tu trabajo de titulo "' . $work_title . ' " ha sido aprobado');
+
+			if($this->send_email_work_approbed($user_mail, $work_id))	 {
 				return true; // Pudo enviar el mail correctamente
 			}else {
 				return false;
@@ -767,6 +775,7 @@ class Admin_trabajos extends MX_Controller
 			$user = $this->usuarios_model->getUsuariosById($trabajo['idUsuarios']);
 
 			if($this->notifyUser($user['email'], $trabajo['titulo'])) {
+			// if($this->send_email_work_approbed($user['email'], $trabajo['idTrabajos'])) {
 				$json = array(
 						'mensaje' => 'Se ha enviado el mail con éxito',
 						'error' => false
@@ -787,6 +796,34 @@ class Admin_trabajos extends MX_Controller
 			);
 			echo json_encode($json);
 		}
+	}
+
+
+	public function send_email_work_approbed( $user, $work )
+	{
+
+		$data['link'] 	= base_url('trabajos/ver/' . $work . '.html');
+		$data['name'] 	= $user;
+		$message = $this->load->view('admin_trabajos/template_email_aprobacion',$data,TRUE); // this will return you html data as message
+
+		$this->load->library('email');
+		$config = array (
+						'mailtype' => 'html',
+						'charset'  => 'utf-8',
+						'priority' => '1'
+						);
+		$this->email->initialize($config);
+
+		$this->email->from($this->config->item('email_admin'));
+		$this->email->to($user);
+		$this->email->subject('Trabajo Aprobado en WordRev');
+		$this->email->message($message);
+		if($this->email->send()) {
+			return true;
+		}else {
+			return false;
+		}
+
 	}
 
 }
