@@ -70,6 +70,8 @@ class Front_login extends CI_class {
 				$dataUsuario['clave'] 	= $this->input->post('password');
 				$usuario 				= $this->login_model->validate($dataUsuario);
 
+
+
 				if(isset($usuario) && $usuario['idUsuarios'] > 0)
 				{ 	// Lo encontró en la base como user registrado.
 					$this->load->model('admin_usuarios/usuarios_model');

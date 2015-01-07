@@ -7,34 +7,45 @@ class Login_model extends CI_Model {
 		}
 
 		// Si no existe me devuelve ['idUsuarios'] = 0,  Si existe devuelve el id del User
-		public function validate($usuario) {
-				try {
-						// $query = $this->db->query("
-						// 										SELECT U.idUsuarios
-						// 										FROM Usuarios U,Roles R
-						// 										WHERE U.email = " . $this->db->escape($usuario['email']) . "
-						// 												AND U.clave = PASSWORD(". $this->db->escape(trim($usuario['clave'])) .")
-						// 												AND U.idRoles = R.idRoles AND (U.estado = 1) " );
-						// harckodeo para que no use la clave del usuario.
-						$query = $this->db->query("
-																SELECT U.idUsuarios
-																FROM Usuarios U,Roles R
-																WHERE U.email = " . $this->db->escape($usuario['email']) . "
-																		AND U.idRoles = R.idRoles AND (U.estado = 1) " );
-						$usuario = $query->row_array();
+		public function validate($usuario)
+		{
+			try {
 
-						if(isset($usuario['idUsuarios']) && $usuario['idUsuarios'] >= 1) {
-								return $usuario;
-						} else {
-								$rol['idUsuarios'] = 0 ;
-								return $rol;
-						}
+					// $q = "SELECT U.idUsuarios FROM Usuarios U
+					// 		WHERE U.email = " . $this->db->escape($usuario['email']) . "
+					// 			AND U.clave = PASSWORD(". $this->db->escape(trim($usuario['clave'])) .")
+					// 			AND (U.estado = 1) ";
 
-				} catch (Exception $e) {
-						$rol['idUsuarios'] = 0 ;
-						return $rol;
-				}
+					$query = $this->db->query("
+															SELECT U.idUsuarios
+															FROM Usuarios U,Roles R
+															WHERE U.email = " . $this->db->escape($usuario['email']) . "
+																	AND U.clave = PASSWORD(". $this->db->escape(trim($usuario['clave'])) .")
+																	AND U.idRoles = R.idRoles AND (U.estado = 1) " );
+
+					// harckodeo para que no use la clave del usuario.
+					// $query = $this->db->query("
+					// 										SELECT U.idUsuarios
+					// 										FROM Usuarios U,Roles R
+					// 										WHERE U.email = " . $this->db->escape($usuario['email']) . "
+					// 												AND U.idRoles = R.idRoles AND (U.estado = 1) " );
+					$usuario = $query->row_array();
+
+
+					if(isset($usuario['idUsuarios']) && $usuario['idUsuarios'] >= 1) {
+							return $usuario;
+					} else {
+							$rol['idUsuarios'] = 0 ;
+							return $rol;
+					}
+
+			} catch (Exception $e) {
+					$rol['idUsuarios'] = 0 ;
+					return $rol;
+			}
 		}
+
+
 
 		// valida si sos administrador
 		public function validateAdmin($usuario) {
@@ -46,6 +57,8 @@ class Login_model extends CI_Model {
 																		AND U.clave = PASSWORD(". $this->db->escape(trim($usuario['clave'])) .")
 																		AND U.idRoles = 1 AND (U.estado = 1) " );
 						$usuario = $query->row_array();
+
+
 						if(isset($usuario['idUsuarios']) && $usuario['idUsuarios'] >= 1) {
 								return $usuario;
 						} else {
