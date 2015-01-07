@@ -1266,14 +1266,14 @@ class Repo_trabajos extends CI_Model
 					FROM Trabajos T
 					INNER JOIN Usuarios U
 						ON T.idUsuarios=U.idUsuarios
-					WHERE T.titulo LIKE $word_search
-						OR T.palabrasClave LIKE $word_search
-						OR T.resumen LIKE $word_search
-						OR T.texto LIKE $word_search
-						OR U.nombre LIKE $word_search
-						OR U.apellido LIKE $word_search
-						OR U.email LIKE $word_search
-						AND T.idEstados = 2
+					WHERE T.idEstados = 2
+						AND (T.titulo LIKE $word_search
+												OR T.palabrasClave LIKE $word_search
+												OR T.resumen LIKE $word_search
+												OR T.texto LIKE $word_search
+												OR U.nombre LIKE $word_search
+												OR U.apellido LIKE $word_search
+												OR U.email LIKE $word_search)
 						ORDER BY T.idTrabajos DESC";
 
 
